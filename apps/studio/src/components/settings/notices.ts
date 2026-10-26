@@ -1,5 +1,5 @@
 /** The notices from docs/notices.md, shown inline next to their switches. Keep the two in sync. */
-const DOCS = "https://github.com/evanbaker315/AttentionOS/blob/main/docs/notices.md";
+const DOCS = "https://github.com/KirthiDiamondJewellery/Marketing/blob/main/docs/notices.md";
 
 export const NOTICES: Record<string, { title: string; usedBy: string; body: string; alternative?: string; href: string }> = {
   scrapingTerms: {

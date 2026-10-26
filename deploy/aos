@@ -77,10 +77,10 @@ case "$cmd" in
       say "Fetching the latest AttentionOS…"
       rm -rf src.new
       if command -v git >/dev/null 2>&1; then
-        git clone --quiet --depth 1 --branch "${branch:-main}" "${repo:-https://github.com/evanbaker315/AttentionOS}" src.new
+        git clone --quiet --depth 1 --branch "${branch:-main}" "${repo:-https://github.com/KirthiDiamondJewellery/Marketing}" src.new
       else
         mkdir -p src.new
-        curl -fsSL "${repo:-https://github.com/evanbaker315/AttentionOS}/archive/refs/heads/${branch:-main}.tar.gz" | tar -xz --strip-components=1 -C src.new
+        curl -fsSL "${repo:-https://github.com/KirthiDiamondJewellery/Marketing}/archive/refs/heads/${branch:-main}.tar.gz" | tar -xz --strip-components=1 -C src.new
       fi
       rm -rf src.old; [ -d src ] && mv src src.old; mv src.new src; rm -rf src.old
       cp src/deploy/docker-compose.yml docker-compose.yml

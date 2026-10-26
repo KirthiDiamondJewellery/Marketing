@@ -2,7 +2,7 @@
   "enabledMcpjsonServers": ["attentionos"],
   "extraKnownMarketplaces": {
     "attentionos": {
-      "source": { "source": "github", "repo": "evanbaker315/AttentionOS" }
+      "source": { "source": "github", "repo": "KirthiDiamondJewellery/Marketing" }
     }
   },
   "enabledPlugins": {

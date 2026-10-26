@@ -7,12 +7,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evanbaker315/AttentionOS.git",
+    "url": "git+https://github.com/KirthiDiamondJewellery/Marketing.git",
     "directory": "apps/cli"
   },
-  "homepage": "https://github.com/evanbaker315/AttentionOS#readme",
+  "homepage": "https://github.com/KirthiDiamondJewellery/Marketing#readme",
   "bugs": {
-    "url": "https://github.com/evanbaker315/AttentionOS/issues"
+    "url": "https://github.com/KirthiDiamondJewellery/Marketing/issues"
   },
   "keywords": [
     "attentionos",

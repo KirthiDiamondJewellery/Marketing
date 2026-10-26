@@ -6,7 +6,7 @@ AttentionOS handles API keys, social accounts, private messages and leads for re
 
 **Please don't open a public issue.** Report privately through GitHub security advisories:
 
-**[Report a vulnerability](https://github.com/evanbaker315/AttentionOS/security/advisories/new)**
+**[Report a vulnerability](https://github.com/KirthiDiamondJewellery/Marketing/security/advisories/new)**
 
 Include what you found, how to reproduce it, the affected version or commit, and the impact you expect. A proof of concept helps but isn't required. Please never include real secrets or anyone's personal data in a report.
 
