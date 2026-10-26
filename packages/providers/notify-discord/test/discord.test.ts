@@ -190,7 +190,7 @@ describe("notifier", () => {
   });
 
   it("preserves attachment bytes and metadata when retrying a multipart upload", async () => {
-    const dir = await mkdtemp(join(tmpdir(), "discord-upload-"));
+    const dir = await mkdtemp(join(tmpdir(), "attachment-upload-"));
     try {
       const bytes = Buffer.from([0, 1, 127, 128, 255]);
       const file = join(dir, "clip.mp4");
