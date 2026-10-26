@@ -11,7 +11,7 @@ AttentionOS adopts the [Contributor Covenant, version 2.1](https://www.contribut
 
 ## Reporting
 
-If you experience or witness unacceptable behaviour, report it privately to the maintainers through [GitHub's private vulnerability reporting form](https://github.com/evanbaker315/AttentionOS/security/advisories/new) (mark it as a conduct report), or contact a maintainer directly.
+If you experience or witness unacceptable behaviour, report it privately to the maintainers through [GitHub's private vulnerability reporting form](https://github.com/KirthiDiamondJewellery/Marketing/security/advisories/new) (mark it as a conduct report), or contact a maintainer directly.
 
 All reports are reviewed promptly and handled in confidence. Maintainers follow the enforcement guidelines in the Contributor Covenant (correction, warning, temporary ban, permanent ban).
 

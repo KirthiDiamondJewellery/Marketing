@@ -68,7 +68,7 @@ export class DiscordClient {
         const base = init();
         res = await this.fetch(`${this.baseUrl}${path}`, {
           ...base,
-          headers: { ...(base.headers as Record<string, string> | undefined), authorization: `Bot ${this.opts.token}`, "user-agent": "AttentionOS (https://github.com/evanbaker315/AttentionOS, 0.1)" },
+          headers: { ...(base.headers as Record<string, string> | undefined), authorization: `Bot ${this.opts.token}`, "user-agent": "AttentionOS (https://github.com/KirthiDiamondJewellery/Marketing, 0.1)" },
           signal: AbortSignal.timeout(timeoutMs ?? this.opts.timeoutMs ?? 30_000),
         });
       } catch (e) {

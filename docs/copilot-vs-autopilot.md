@@ -70,7 +70,7 @@ It keeps running in Docker, on your computer or on a server ([docs/deploy/server
 Install by hand, if needed:
 
 ```
-/plugin marketplace add evanbaker315/AttentionOS
+/plugin marketplace add KirthiDiamondJewellery/Marketing
 /plugin install attentionos@attentionos
 ```
 

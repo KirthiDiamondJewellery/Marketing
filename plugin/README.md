@@ -7,7 +7,7 @@ Version 0.1.0. Open an AttentionOS workspace in Claude Code and start with `/att
 Install it from Claude Code:
 
 ```
-/plugin marketplace add evanbaker315/AttentionOS
+/plugin marketplace add KirthiDiamondJewellery/Marketing
 /plugin install attentionos@attentionos
 ```
 
