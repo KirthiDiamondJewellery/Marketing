@@ -1,0 +1,16 @@
+# Brand-literal deny-list, read by scripts/brand-literal-guard.mjs.
+#
+# This public file only holds generic placeholders. Maintainers keep the real list (names of people,
+# businesses, clients, handles and hosts that must never appear in the engine) in a private file
+# outside the repository and point the guard at it:
+#
+#   ATTENTIONOS_DENYLIST=/path/to/private.deny node scripts/brand-literal-guard.mjs
+#
+# In CI the private list comes from a repository secret written to a temp file.
+#
+# Format: one entry per line. Plain text matches case-insensitively on word boundaries.
+# Prefix with "re:" for a regular expression. Lines starting with "#" are comments.
+
+replace-with-a-real-client-name
+replace-with-a-real-business-name
+re:\breplace-with-a-real-handle\b

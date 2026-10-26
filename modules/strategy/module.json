@@ -1,0 +1,16 @@
+{
+  "id": "strategy",
+  "name": "Strategy",
+  "description": "Decides what to make and when: content lanes with weekly quotas, funnel mix, angles, story structures, proof pickers and the daily Film today brief.",
+  "agent": "strategist",
+  "tier": "core",
+  "level": 1,
+  "dependsOn": ["research", "learn"],
+  "requiredProviders": [],
+  "optionalProviders": ["notifier"],
+  "schedules": {
+    "strategy.daily-brief": "0 6 * * 1-5",
+    "strategy.batch-day": "0 17 * * 0"
+  },
+  "requiresAcknowledgement": []
+}

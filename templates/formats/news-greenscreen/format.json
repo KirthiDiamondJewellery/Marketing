@@ -1,0 +1,118 @@
+{
+  "$schema": "../format.schema.json",
+  "id": "news-greenscreen",
+  "version": 1,
+  "name": "News green screen",
+  "summary": "You in front of the story: headlines, posts and charts behind you, your take on what it means.",
+  "bestFor": [
+    "A news story or industry change in your niche, filmed within a day",
+    "Reacting to a post, a launch or a report",
+    "Explaining what a change means for your customers"
+  ],
+  "needs": [
+    "One vertical take to camera, ideally in front of a green or evenly lit plain wall",
+    "Screenshots of the story's sources (articles, posts, charts)"
+  ],
+  "layout": {
+    "default": "inset",
+    "modes": [
+      { "mode": "full", "use": "The hook and the call to action: face only." },
+      {
+        "mode": "inset",
+        "use": "Most of the video: the story visual fills the frame and you sit in front of it (keyed out on green, or in a rounded window)."
+      },
+      { "mode": "fullVisual", "use": "1 to 2 s on a headline or a number the viewer must read." }
+    ],
+    "fullVisualShare": { "max": 0.5 },
+    "inset": { "scale": 0.55, "anchor": "bottom-center", "key": true },
+    "visualChangeEveryS": [1.5, 3]
+  },
+  "captions": {
+    "style": "bold-pop",
+    "position": "middle",
+    "safeZone": "universal",
+    "maxWords": 3,
+    "case": "upper",
+    "emphasisPerLine": [1, 2]
+  },
+  "overlaySlots": [
+    {
+      "kind": "headline",
+      "when": "The story header: frame 1 to about 3 s, then once more at the turn.",
+      "max": 2,
+      "evidenceRequired": false
+    },
+    {
+      "kind": "screenshot",
+      "when": "Each source you mention, with a source chip.",
+      "max": 5,
+      "evidenceRequired": true
+    },
+    {
+      "kind": "post-card",
+      "when": "A post you react to, recreated as a generic card.",
+      "max": 3,
+      "evidenceRequired": true
+    },
+    { "kind": "chart", "when": "One number that tells the story.", "max": 1, "evidenceRequired": true }
+  ],
+  "pacing": {
+    "targetLengthS": [20, 50],
+    "hookBy": 2,
+    "maxPauseS": 0.15,
+    "p90PauseS": 0.1,
+    "cut": {
+      "strictDb": -42,
+      "broadDb": -35,
+      "wordPadS": 0.05,
+      "hookProtectS": 0.6,
+      "minKeepS": 0.2,
+      "retakes": true,
+      "editNotes": true,
+      "restarts": true,
+      "fillers": true,
+      "fillerIslands": true,
+      "sentencePauseS": 0.1
+    },
+    "notes": [
+      "News goes stale: film within 24 hours of the story.",
+      "Change the visual behind you every 1.5 to 3 s.",
+      "Say what happened in one line, then spend the rest on what it means for the viewer."
+    ]
+  },
+  "audio": {
+    "sfx": "beats",
+    "music": "optional",
+    "notes": ["A whoosh or swipe when the visual changes, never two in a row the same, at most one every 1.2 s."]
+  },
+  "camera": { "punchIns": false, "push": true },
+  "motion": { "hookPush": true },
+  "look": { "color": "auto", "grade": "pop", "sharpen": "auto" },
+  "broll": {
+    "stills": 8,
+    "loops": 3,
+    "notes": ["Sources first: the article, the post, the official page.", "Log where every image came from."]
+  },
+  "evidence": [
+    {
+      "choice": "Show the source behind you",
+      "why": "Seeing the headline makes the story credible and lets you skip the setup.",
+      "strength": "strong"
+    },
+    {
+      "choice": "Fast visual changes",
+      "why": "News reels compete on pace; a new image every 2 s or so keeps the eye busy while you explain.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Posts recreated as generic cards",
+      "why": "A clean card is readable on a phone and avoids showing another platform's interface or someone's private details.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Film within 24 hours",
+      "why": "Interest in a news story drops fast after the first day.",
+      "strength": "strong"
+    }
+  ]
+}

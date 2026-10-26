@@ -1,0 +1,24 @@
+{
+  "name": "@attentionos/runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Runs LLM jobs on the Claude Agent SDK and native jobs, with budgets, timeouts and event streaming.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.296",
+    "@anthropic-ai/sdk": "^0.133.0",
+    "@attentionos/core": "workspace:*",
+    "@attentionos/mcp": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.5",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/runtime": "workspace:*"
+  }
+}

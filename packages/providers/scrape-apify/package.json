@@ -1,0 +1,20 @@
+{
+  "name": "@attentionos/provider-scrape-apify",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Scraper adapter over the Apify REST API (Instagram and TikTok profile scrapers) with cost estimates and spend reporting.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "zod": "^4.6.5",
+    "@attentionos/provider-scrape-ytdlp": "workspace:*",
+    "@attentionos/provider-shared": "workspace:*"
+  }
+}

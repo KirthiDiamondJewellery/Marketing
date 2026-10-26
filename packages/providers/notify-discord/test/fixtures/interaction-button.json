@@ -1,0 +1,16 @@
+{
+  "id": "1500000000000000001",
+  "application_id": "1000000000000000099",
+  "type": 3,
+  "channel_id": "1200000000000000001",
+  "data": { "custom_id": "approve:ap-9", "component_type": 2 },
+  "member": { "user": { "id": "1100000000000000001", "username": "demo_owner" } },
+  "message": {
+    "id": "1300000000000000020",
+    "content": "Community drafted 3 DM replies.\n\nref ap-9",
+    "timestamp": "2026-10-13T15:00:00.000000+00:00",
+    "author": { "id": "1000000000000000099", "username": "attention-bot", "bot": true },
+    "attachments": [],
+    "embeds": []
+  }
+}

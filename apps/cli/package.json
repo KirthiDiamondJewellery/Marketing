@@ -1,0 +1,93 @@
+{
+  "name": "attentionos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The AttentionOS command line. Runs inside the Docker stack (Studio, worker, MCP server, jobs); not published to npm.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanbaker315/AttentionOS.git",
+    "directory": "apps/cli"
+  },
+  "homepage": "https://github.com/evanbaker315/AttentionOS#readme",
+  "bugs": {
+    "url": "https://github.com/evanbaker315/AttentionOS/issues"
+  },
+  "keywords": [
+    "attentionos",
+    "content",
+    "claude-code",
+    "mcp",
+    "personal-brand"
+  ],
+  "bin": {
+    "attentionos": "./dist/bin.js",
+    "attentionos-guard": "./dist/guard.js"
+  },
+  "exports": {
+    "./config": "./src/config.ts",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "tsup",
+    "prepack": "tsup",
+    "gen:builtins": "node gen-builtins.cjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "croner": "^10.0.1",
+    "fast-xml-parser": "^5.11.2",
+    "jiti": "^2.7.0",
+    "picocolors": "^1.1.1",
+    "postgres": "^3.4.9",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.296"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/claude-agent-sdk": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/guardrails": "workspace:*",
+    "@attentionos/mcp": "workspace:*",
+    "@attentionos/module-community": "workspace:*",
+    "@attentionos/module-editing": "workspace:*",
+    "@attentionos/module-knowledge": "workspace:*",
+    "@attentionos/module-learn": "workspace:*",
+    "@attentionos/module-onboarding": "workspace:*",
+    "@attentionos/module-ops": "workspace:*",
+    "@attentionos/module-production": "workspace:*",
+    "@attentionos/module-publishing": "workspace:*",
+    "@attentionos/module-research": "workspace:*",
+    "@attentionos/module-scripting": "workspace:*",
+    "@attentionos/module-strategy": "workspace:*",
+    "@attentionos/module-trial-reels": "workspace:*",
+    "@attentionos/provider-analytics-csv": "workspace:*",
+    "@attentionos/provider-asr-whispercpp": "workspace:*",
+    "@attentionos/provider-crm-webhook": "workspace:*",
+    "@attentionos/provider-notify-console": "workspace:*",
+    "@attentionos/provider-notify-discord": "workspace:*",
+    "@attentionos/provider-notify-telegram": "workspace:*",
+    "@attentionos/provider-publish-blotato": "workspace:*",
+    "@attentionos/provider-publish-zernio": "workspace:*",
+    "@attentionos/provider-scrape-apify": "workspace:*",
+    "@attentionos/provider-scrape-iggraph": "workspace:*",
+    "@attentionos/provider-scrape-ytdlp": "workspace:*",
+    "@attentionos/provider-trends-web": "workspace:*",
+    "@attentionos/runner": "workspace:*",
+    "@attentionos/runtime": "workspace:*",
+    "@attentionos/worker": "workspace:*",
+    "tsup": "^8.5.1"
+  }
+}

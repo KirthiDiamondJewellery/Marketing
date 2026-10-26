@@ -1,0 +1,18 @@
+{
+  "id": "ops",
+  "name": "Ops",
+  "description": "The Chief of Staff: your morning brief, the approvals queue, chat over Telegram or Discord, quiet hours, alerts and demo mode.",
+  "agent": "chief_of_staff",
+  "tier": "core",
+  "level": 1,
+  "dependsOn": [],
+  "requiredProviders": [],
+  "optionalProviders": ["notifier"],
+  "schedules": {
+    "ops.write-morning-brief": "15 7 * * *",
+    "ops.morning-brief": "30 7 * * *",
+    "ops.dispatch-outbox": "* * * * *",
+    "ops.poll-inbound": "* * * * *"
+  },
+  "requiresAcknowledgement": []
+}

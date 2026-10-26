@@ -1,0 +1,23 @@
+items:
+  - id: maple-kitchen
+    kind: case_study
+    title: Maple Street kitchen
+    summary: Galley kitchen opened to the dining room; planned in two sessions before demolition.
+    numbers:
+      - { value: "11 weeks", label: build time, source: project log }
+      - { value: "4%", label: over the planned budget, source: final invoice }
+    clientConsent: false
+  - id: permit-faq
+    kind: faq
+    title: Do I need a permit to move a wall?
+    summary: Usually yes when the wall is load-bearing or carries plumbing; the plan session checks it first.
+  - id: price-objection
+    kind: objection
+    title: Isn't planning just an extra cost?
+    summary: The plan session replaces guesswork in contractor quotes.
+  - id: attic-build
+    kind: build
+    title: Attic office conversion
+    summary: Dormer and insulation upgrade, scheduled around two inspections.
+    numbers:
+      - { value: "2", label: inspections passed first time, source: inspection records }

@@ -1,0 +1,8 @@
+{ "data": [
+  { "name": "views", "period": "lifetime", "values": [{ "value": 15400 }] },
+  { "name": "reach", "period": "lifetime", "values": [{ "value": 11020 }] },
+  { "name": "saved", "period": "lifetime", "values": [{ "value": 212 }] },
+  { "name": "shares", "period": "lifetime", "values": [{ "value": 97 }] },
+  { "name": "total_interactions", "period": "lifetime", "values": [{ "value": 683 }] },
+  { "name": "ig_reels_avg_watch_time", "period": "lifetime", "values": [{ "value": 9120 }] }
+] }

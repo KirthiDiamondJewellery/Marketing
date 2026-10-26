@@ -1,0 +1,6 @@
+{ "items": [
+  { "id": "90001", "platform": "instagram", "fullname": "Examplebrand Studio", "username": "examplebrand.studio" },
+  { "id": "90002", "platform": "twitter", "fullname": "Examplebrand Studio", "username": "@examplebrandstudio" },
+  { "id": "90003", "platform": "facebook", "fullname": "Examplebrand Studio", "username": "examplebrand" },
+  { "id": "90004", "platform": "pinterest", "fullname": "Examplebrand Studio", "username": "examplebrand" }
+] }

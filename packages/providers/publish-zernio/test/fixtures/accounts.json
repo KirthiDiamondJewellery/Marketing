@@ -1,0 +1,8 @@
+{
+  "accounts": [
+    { "_id": "6a0f1c2d3e4f5a6b7c8d9e01", "platform": "instagram", "profileId": "6a0f1c2d3e4f5a6b7c8d9e00", "username": "examplebrand.studio", "displayName": "Examplebrand Studio", "isActive": true, "needsReconnection": false, "enabled": true, "platformUserId": "17840000000000001" },
+    { "_id": "6a0f1c2d3e4f5a6b7c8d9e02", "platform": "tiktok", "profileId": { "_id": "6a0f1c2d3e4f5a6b7c8d9e00", "name": "Examplebrand Studio" }, "username": "@examplebrand.studio", "isActive": true, "needsReconnection": true },
+    { "_id": "6a0f1c2d3e4f5a6b7c8d9e03", "platform": "twitter", "profileId": "6a0f1c2d3e4f5a6b7c8d9e00", "username": "examplebrandstudio", "isActive": true },
+    { "_id": "6a0f1c2d3e4f5a6b7c8d9e04", "platform": "pinterest", "profileId": "6a0f1c2d3e4f5a6b7c8d9e00", "username": "examplebrand", "isActive": true }
+  ]
+}

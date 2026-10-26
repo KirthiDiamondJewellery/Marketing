@@ -1,0 +1,6 @@
+name: "{{WORKSPACE_NAME}}"
+timezone: "{{TIMEZONE}}"
+funnelMix:
+  tofu: 50
+  mofu: 30
+  bofu: 20

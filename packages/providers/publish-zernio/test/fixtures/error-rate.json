@@ -1,0 +1,1 @@
+{ "error": "Rate limit exceeded", "details": { "currentCount": 61, "limit": 60, "retryAfterSeconds": 3 } }

@@ -1,0 +1,3 @@
+[
+  { "id": 1, "category": "llm", "provider": "anthropic", "amount_micro": 420000, "ts": "@now-1h" }
+]

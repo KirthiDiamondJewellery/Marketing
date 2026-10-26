@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/provider-publish-blotato",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Blotato adapter: publishing, Instagram and Facebook comment-to-DM, and analytics for Blotato-published posts.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "zod": "^4.6.5",
+    "@attentionos/provider-shared": "workspace:*"
+  }
+}

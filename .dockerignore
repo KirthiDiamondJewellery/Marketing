@@ -1,0 +1,38 @@
+# Build context for deploy/Dockerfile (the image builds AttentionOS from this checkout).
+# Keep it small and free of secrets: no node_modules, build output, local envs, workspaces or backups.
+**/node_modules
+**/.next
+**/.next-*
+**/.turbo
+**/dist
+**/coverage
+**/*.tsbuildinfo
+**/.DS_Store
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+media-py/.venv
+
+# Secrets and personal data never go into the image.
+**/.env
+**/.env.*
+!**/.env.example
+_private
+workspaces
+tmp
+deploy/workspace
+deploy/backups
+deploy/.env
+
+# Not needed to build or run the engine.
+.git
+.github
+.claude
+design
+plugin
+**/*.log
+**/.impeccable
+**/*.pem
+**/.npmrc
+.vscode
+.idea

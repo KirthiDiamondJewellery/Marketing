@@ -1,0 +1,6 @@
+{ "items": [
+  { "id": "771001", "postTime": "2026-10-14T12:00:03Z", "platform": "instagram", "text": "Three ways to make a hand-bound notebook last.", "account": { "id": "90001" },
+    "state": { "type": "published", "postUrl": "https://www.instagram.com/reel/QF0000demo/", "analytics": { "fetchedAt": "2026-10-15T12:00:00Z", "metrics": { "viewsCount": "9100", "reachCount": "4100", "likesCount": "320", "commentsCount": "58", "sharesCount": "21", "savesCount": "44", "followsCount": "6", "watchTimeMsAvg": "6400" } } } },
+  { "id": "771002", "postTime": "2026-10-13T12:00:03Z", "platform": "linkedin", "text": "A linkedin post", "account": { "id": "90001" }, "state": { "type": "published", "postUrl": "https://www.linkedin.com/feed/update/demo" } },
+  { "id": "771003", "postTime": "2026-10-12T12:00:03Z", "platform": "twitter", "text": "On X", "account": { "id": "90002" }, "state": { "type": "published", "postUrl": "https://x.com/examplebrandstudio/status/1" } }
+] }

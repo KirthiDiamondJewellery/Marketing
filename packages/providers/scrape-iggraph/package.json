@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/provider-scrape-iggraph",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Instagram Graph API adapter: business_discovery for public professional accounts, and own-account media insights.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "zod": "^4.6.5",
+    "@attentionos/provider-shared": "workspace:*"
+  }
+}

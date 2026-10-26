@@ -1,0 +1,52 @@
+name: Provider request
+description: Ask for a new adapter (publishing, research, speech to text, notifications, CRM, storage, images).
+labels: [provider]
+body:
+  - type: input
+    id: service
+    attributes:
+      label: Service
+      placeholder: The service's name and website
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of provider
+      options:
+        - Publisher
+        - Inbox (comments and DMs)
+        - Own analytics
+        - Scraper (competitor research)
+        - Trend source
+        - Speech to text
+        - Image generation
+        - Notifier (chat)
+        - CRM
+        - Storage
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this service
+      description: What can it do that the current providers can't, or why do you already use it?
+    validations:
+      required: true
+  - type: input
+    id: api-docs
+    attributes:
+      label: API documentation link
+  - type: textarea
+    id: pricing
+    attributes:
+      label: Pricing and free tier
+      description: Can it be tried for free? Is API access on every plan?
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checks
+      options:
+        - label: The service has an official API (AttentionOS doesn't use browser automation of social platforms).
+          required: true
+        - label: I'd be willing to help test or build this adapter.

@@ -1,0 +1,1 @@
+{ "flow": { "id": "flow_qf_1", "accountId": "90001", "isActive": true, "triggers": [ { "id": "t1", "type": "comment-received", "keywords": ["stitch", "Stitch", "STITCH"], "postId": "771001" } ] } }

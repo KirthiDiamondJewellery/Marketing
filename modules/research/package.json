@@ -1,0 +1,25 @@
+{
+  "name": "@attentionos/module-research",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Research (Analyst): own-account sync, competitor outliers, trend radar and teardowns.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./testing": "./src/testing/db.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/scoring": "workspace:*",
+    "postgres": "^3.4.9",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@attentionos/db": "workspace:*"
+  }
+}

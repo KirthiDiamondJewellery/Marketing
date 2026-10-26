@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Types, config and Brand Kit schemas, module and provider contracts, and the database client for AttentionOS.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "postgres": "^3.4.9",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  }
+}

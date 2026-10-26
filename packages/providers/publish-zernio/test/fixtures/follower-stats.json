@@ -1,0 +1,13 @@
+{
+  "accounts": [{ "_id": "6a0f1c2d3e4f5a6b7c8d9e01", "platform": "instagram", "username": "demo_studio", "currentFollowers": 1219, "growth": 15, "growthPercentage": 1.25, "dataPoints": 3 }],
+  "stats": {
+    "6a0f1c2d3e4f5a6b7c8d9e01": [
+      { "date": "2026-10-02", "followers": 1219 },
+      { "date": "2026-10-01", "followers": 1204 },
+      { "date": "bad", "followers": 1 },
+      { "date": "2026-10-03" }
+    ]
+  },
+  "dateRange": { "from": "2026-10-01T00:00:00.000Z", "to": "2026-10-03T00:00:00.000Z" },
+  "granularity": "daily"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/media",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Editing contracts and wrappers: the EditPlan schema, the source→output time map, the edit map (edit.json), ffprobe, format templates and the media-py runner.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "export-schema": "tsx scripts/export-schema.ts"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

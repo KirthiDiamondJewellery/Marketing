@@ -1,0 +1,22 @@
+{
+  "name": "@attentionos/module-scripting",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Copywriter module: hook banks, pattern taxonomy, scripts with a claim ledger, per-platform captions and text posts.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/guardrails": "workspace:*",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@attentionos/db": "workspace:*"
+  }
+}

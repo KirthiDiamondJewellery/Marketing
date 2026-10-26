@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/provider-publish-zernio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Zernio adapter: publishing, inbox (comment-to-DM, conversations, comments), analytics and signed webhooks.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "zod": "^4.6.5",
+    "@attentionos/provider-shared": "workspace:*"
+  }
+}

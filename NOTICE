@@ -1,0 +1,75 @@
+AttentionOS
+Copyright (c) 2026 The AttentionOS Authors
+
+This product is licensed under the MIT License (see LICENSE).
+
+AttentionOS was written new for this repository. Patterns proven in earlier content systems were
+re-implemented from written descriptions; no code, data or media from those systems is included.
+
+-------------------------------------------------------------------------------
+Third-party material
+-------------------------------------------------------------------------------
+
+Adapted method files and other third-party material included in this repository are listed below,
+each with its source, license and copyright notice, as their licenses require.
+
+Scripting method skills and copy guardrails
+
+The following AttentionOS files adapt methods from MIT-licensed projects. The text was rewritten for
+spoken short-form video and for this repository; no files were copied.
+
+| AttentionOS file | Adapted from | License |
+|---|---|---|
+| `modules/scripting/skills/hook-audit/SKILL.md` (four hook killers, open-loop check) | "viral-hooks" in https://github.com/artemnovitckii/content-skills, Copyright (c) 2026 Artem Novitckii | MIT |
+| `modules/scripting/skills/spoken-humanizer/SKILL.md`, and the sales-word and run-up lists in `packages/guardrails/src/banned.ts` | https://github.com/blader/humanizer, Copyright (c) 2025 Siqi Chen; and "anti-ai-writing" in https://github.com/artemnovitckii/content-skills, Copyright (c) 2026 Artem Novitckii | MIT |
+
+The humanizer project credits the Wikipedia page "Wikipedia:Signs of AI writing" (CC BY-SA 4.0) as its basis.
+The AttentionOS spoken-humanizer skill uses the general categories of that guidance in newly written text
+and does not reproduce the page's text.
+
+Both MIT projects are distributed under this license:
+
+```
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+-------------------------------------------------------------------------------
+Not included, installed separately
+-------------------------------------------------------------------------------
+
+- npm and Python dependencies are installed by their package managers under their own licenses.
+  See each package's license in node_modules/ or the media-py virtual environment.
+- Fonts used by the design system and renderers (Geist, Geist Mono, Instrument Serif, Montserrat,
+  Caveat) are licensed under the SIL Open Font License 1.1 and are fetched at setup time.
+- Speech recognition models (whisper.cpp, Parakeet) are downloaded by `attentionos doctor --fix`
+  under their own licenses.
+- The optional motion engine depends on Remotion, which requires a paid company license for
+  companies with more than three people. AttentionOS asks you to acknowledge this before enabling it.
+- Third-party Claude Code skills without a license are never vendored; where their license allows,
+  setup offers to install them from their original source.
+
+-------------------------------------------------------------------------------
+Trademarks
+-------------------------------------------------------------------------------
+
+Claude is a trademark of Anthropic. Instagram, TikTok, YouTube, Facebook, LinkedIn, X, Threads,
+Telegram, Discord and other product names are trademarks of their respective owners. AttentionOS is
+not affiliated with or endorsed by them.

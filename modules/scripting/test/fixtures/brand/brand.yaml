@@ -1,0 +1,18 @@
+# Fictional demo brand used only in tests.
+name: Examplebrand Studio
+oneLiner: Design-build consulting for homeowners planning a remodel.
+timezone: America/New_York
+handles:
+  instagram: examplebrandstudio
+cta:
+  primary: comment_keyword
+bannedPhrases:
+  - dream home
+  - luxury
+hashtagPool:
+  - "#designbuild"
+  - "#kitchenremodel"
+  - "#remodelingtips"
+  - "#homerenovation"
+  - "#remodeling"
+  - "#construction"

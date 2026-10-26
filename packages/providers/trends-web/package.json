@@ -1,0 +1,20 @@
+{
+  "name": "@attentionos/provider-trends-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Trend sources on the open web: RSS/Atom feeds, Google News search, Hacker News, Reddit and GitHub.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "fast-xml-parser": "^5.11.2",
+    "zod": "^4.6.5",
+    "@attentionos/provider-shared": "workspace:*"
+  }
+}

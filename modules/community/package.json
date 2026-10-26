@@ -1,0 +1,21 @@
+{
+  "name": "@attentionos/module-community",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Community agent: keyword to DM to lead magnet, DM triage with draft replies, comment reply drafts and lead handoff.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/guardrails": "workspace:*",
+    "@attentionos/module-publishing": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

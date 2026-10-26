@@ -1,0 +1,23 @@
+# Fictional demo brand used by tests and demo mode.
+name: Examplebrand Studio
+oneLiner: Design-build consultancy that helps homeowners plan renovations before they hire a contractor.
+website: https://examplebrand.example
+timezone: America/New_York
+handles:
+  instagram: examplebrand.studio
+  tiktok: examplebrandstudio
+offers:
+  - id: plan-session
+    name: Renovation plan session
+    url: https://examplebrand.example/plan
+    cta: book_call
+cta:
+  primary: comment_keyword
+  siteUrl: https://examplebrand.example
+  utmContentPrefix: ""
+funnelMix: { tofu: 50, mofu: 30, bofu: 20 }
+bannedPhrases:
+  - game changer
+  - dream home
+  - you won't believe
+hashtagPool: ["#renovation", "#homeremodel", "#designbuild", "#kitchenremodel", "#homeowner"]

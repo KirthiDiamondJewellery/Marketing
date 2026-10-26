@@ -1,0 +1,27 @@
+# Check out text files with LF line endings on every OS. Git for Windows converts to CRLF by default, which breaks the
+# shell scripts (docker-entrypoint.sh, aos, backup.sh) with errors like "/bin/sh^M: not found".
+* text=auto eol=lf
+
+# Real CSV exports use CRLF; keep test fixtures byte-for-byte so the parser is tested on them.
+packages/providers/analytics-csv/test/fixtures/*.csv -text
+
+# Executables without an extension.
+deploy/aos text eol=lf
+
+# Binary files: never convert.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.mp4 binary
+*.mov binary
+*.wav binary
+*.mp3 binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.onnx binary
+*.bin binary

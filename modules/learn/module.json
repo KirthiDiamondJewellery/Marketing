@@ -1,0 +1,27 @@
+{
+  "id": "learn",
+  "name": "Learn",
+  "description": "Captures metric snapshots and follower counts, measures each post against your own normal, finds which choices and posting times lift results, tracks goals and the post-to-revenue funnel, drafts post-mortems and the weekly report, and watches spend.",
+  "agent": "analyst",
+  "tier": "core",
+  "level": 1,
+  "dependsOn": [
+    "research"
+  ],
+  "requiredProviders": [],
+  "optionalProviders": [
+    "ownAnalytics",
+    "scraper",
+    "notifier"
+  ],
+  "schedules": {
+    "learn.capture-snapshots": "10 * * * *",
+    "learn.capture-followers": "15 6 * * *",
+    "learn.funnel-import": "25 * * * *",
+    "learn.attribution": "40 5 * * *",
+    "learn.post-mortem-scan": "50 5 * * *",
+    "learn.weekly-briefing": "0 8 * * 1",
+    "learn.cost-watch": "20 */3 * * *"
+  },
+  "requiresAcknowledgement": []
+}

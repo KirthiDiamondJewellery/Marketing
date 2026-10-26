@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+# aos: everyday commands for your AttentionOS install. Run it from the AttentionOS folder (./aos <command>).
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$DIR"
+export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin:$HOME/.orbstack/bin:/Applications/Docker.app/Contents/Resources/bin:$HOME/.local/bin"
+
+say() { printf '%s\n' "$*"; }
+die() { printf 'aos: %s\n' "$*" >&2; exit 1; }
+# WSL 2 (Windows): Docker comes from Docker Desktop's WSL integration, and the browser lives on the Windows side.
+is_wsl() { [ -n "${WSL_DISTRO_NAME:-}" ] || grep -qi microsoft /proc/version 2>/dev/null; }
+env_get() { sed -n "s/^$1=//p" .env 2>/dev/null | tail -1 | sed 's/^"\(.*\)"$/\1/'; }
+env_set() { # env_set KEY VALUE: replace or add a line in .env, keeping it private
+  local tmp; tmp="$(mktemp "$DIR/.env.XXXXXX")"
+  { grep -v "^$1=" .env 2>/dev/null || true; printf '%s=%s\n' "$1" "$2"; } > "$tmp"
+  chmod 600 "$tmp"; mv "$tmp" .env
+}
+
+[ -f .env ] || die "No .env here. Run ./aos from the stack dir (see docs/install.md)."
+[ -f docker-compose.yml ] || die "No docker-compose.yml here. Copy it from src/deploy/docker-compose.yml (see docs/install.md)."
+
+# On WSL, a stack under /mnt/<drive> (the Windows file system) is slow, and .env can't be made private there.
+if is_wsl && [[ "$DIR" == /mnt/[a-z]/* ]]; then
+  printf 'aos: warning: %s is on the Windows drive. Move it into your Linux home (e.g. ~/AttentionOS); see docs/install.md (Windows).\n' "$DIR" >&2
+fi
+
+DOCKER=(docker)
+case "${1:-help}" in help|-h|--help|url|access-key) ;; *)
+  if ! docker info >/dev/null 2>&1; then
+    if [ "$(uname -s)" = "Darwin" ]; then
+      die "Docker isn't running. Open Docker Desktop or OrbStack, wait for it to start, then try again."
+    elif is_wsl; then
+      die "Can't reach Docker from WSL. Start Docker Desktop on Windows and turn on Settings > Resources > WSL integration for this distro (${WSL_DISTRO_NAME:-Ubuntu}), then try again."
+    elif [ "$(id -u)" != "0" ] && command -v sudo >/dev/null 2>&1 && sudo docker info >/dev/null 2>&1; then
+      DOCKER=(sudo docker) # your user isn't in the docker group
+    else
+      die "Can't reach Docker. Is it running? Try: sudo systemctl start docker"
+    fi
+  fi
+  ;;
+esac
+compose() { "${DOCKER[@]}" compose "$@"; }
+
+APP=attentionos
+url() {
+  local u; u="$(env_get ATTENTIONOS_STUDIO_URL)"
+  [ -n "$u" ] || u="http://localhost:$(env_get AOS_PORT)"
+  printf '%s' "$u"
+}
+
+cmd="${1:-help}"
+[ $# -gt 0 ] && shift
+case "$cmd" in
+  status)
+    compose ps
+    say ""
+    if compose exec -T "$APP" node -e "fetch('http://127.0.0.1:4747/api/health').then(r=>r.json()).then(h=>{console.log('Studio: '+(h.ok?'healthy':'not healthy: '+(h.problem||''))+' · worker '+h.worker+' · version '+h.version)}).catch(()=>{console.log('Studio: not answering');process.exit(1)})"; then :; fi
+    say "Open Studio: $(url)"
+    ;;
+  open)
+    u="$(url)"
+    say "Opening $u"
+    if is_wsl; then
+      if command -v wslview >/dev/null 2>&1; then wslview "$u"; else explorer.exe "$u" >/dev/null 2>&1 || true; fi
+    elif command -v open >/dev/null 2>&1; then open "$u"; elif command -v xdg-open >/dev/null 2>&1; then xdg-open "$u"; fi
+    ;;
+  url) url; echo ;;
+  logs) compose logs -f --tail 100 "${@:-$APP}" ;;
+  start) compose up -d && say "Started. Open Studio: $(url)" ;;
+  stop) compose stop && say "Stopped. Your workspace and database are kept. Start again with ./aos start" ;;
+  restart) compose up -d --force-recreate "$APP" && say "Restarted. Open Studio: $(url)" ;;
+  update)
+    # Fetch the latest AttentionOS, rebuild, apply database updates (on start) and restart.
+    repo="$(env_get AOS_REPO_URL)"; branch="$(env_get AOS_REPO_BRANCH)"
+    if [ "${1:-}" != "--no-fetch" ]; then
+      say "Fetching the latest AttentionOS…"
+      rm -rf src.new
+      if command -v git >/dev/null 2>&1; then
+        git clone --quiet --depth 1 --branch "${branch:-main}" "${repo:-https://github.com/evanbaker315/AttentionOS}" src.new
+      else
+        mkdir -p src.new
+        curl -fsSL "${repo:-https://github.com/evanbaker315/AttentionOS}/archive/refs/heads/${branch:-main}.tar.gz" | tar -xz --strip-components=1 -C src.new
+      fi
+      rm -rf src.old; [ -d src ] && mv src src.old; mv src.new src; rm -rf src.old
+      cp src/deploy/docker-compose.yml docker-compose.yml
+      cp src/deploy/aos aos.new && chmod 755 aos.new && mv aos.new aos
+      cp src/deploy/uninstall.sh uninstall.sh && chmod 755 uninstall.sh
+    fi
+    say "Rebuilding (a few minutes)…"
+    compose build --pull "$APP"
+    compose up -d --remove-orphans --wait --wait-timeout 900
+    say "Updated. Open Studio: $(url)"
+    ;;
+  backup)
+    # backup.sh in the stack dir (older installs) wins; otherwise the one in the source.
+    if [ -x ./backup.sh ]; then ./backup.sh
+    elif [ -f src/deploy/backup.sh ]; then AOS_STACK_DIR="$DIR" bash src/deploy/backup.sh
+    else die "No backup script. Expected src/deploy/backup.sh (see docs/install.md)."; fi
+    ;;
+  shell) compose exec "$APP" bash ;;
+  cli) compose exec "$APP" attentionos "$@" ;;
+  doctor) compose exec "$APP" attentionos doctor "$@" ;;
+  claude) compose exec "$APP" claude "$@" ;;
+  claude-login)
+    # Make a long-lived sign-in token with `claude setup-token` and save it in .env.
+    token=""
+    # Sign in on this machine when it has a browser. WSL sets DISPLAY too, but only counts when Claude Code is installed
+    # in WSL; otherwise sign in from inside the container, which works anywhere.
+    if [ -x src/deploy/claude-token.sh ] && { [ "$(uname -s)" = "Darwin" ] || { ! is_wsl && [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; } || { is_wsl && command -v claude >/dev/null 2>&1; }; }; then
+      token="$(src/deploy/claude-token.sh)" || true
+    else
+      if is_wsl; then say "Sign in through AttentionOS (open the link in your Windows browser):"; else say "This computer has no browser, so sign in from any device:"; fi
+      say "  1. Below, Claude prints a link. Open it on your phone or laptop and approve."
+      say "  2. Paste the code it gives you back here."
+      say "  (Or on your own computer run: claude setup-token, and paste that token when asked below.)"
+      say ""
+      compose exec "$APP" claude setup-token || true
+      say ""
+      printf 'Paste the token it printed (sk-ant-oat01-…), then press Enter: '
+      IFS= read -r -s token || token=""; echo
+      token="$(printf '%s' "$token" | tr -d '[:space:]')"
+    fi
+    case "$token" in
+      sk-ant-oat01-*) env_set CLAUDE_CODE_OAUTH_TOKEN "$token"; compose up -d "$APP"; say "Claude is connected. Your agents now run on your Claude plan." ;;
+      *) die "No token saved. Run ./aos claude-login again when you're ready." ;;
+    esac
+    ;;
+  access-key) env_get ATTENTIONOS_STUDIO_TOKEN ;;
+  uninstall) exec ./uninstall.sh "$@" ;;
+  help|-h|--help|*)
+    cat <<EOF
+AttentionOS, from $DIR
+
+  ./aos status          Is everything running? Where's Studio?
+  ./aos open            Open Studio in your browser
+  ./aos logs [service]  Follow the logs (Ctrl-C to stop watching). Services: $(compose config --services 2>/dev/null | paste -sd, - | sed 's/,/, /g')
+  ./aos update          Get the latest AttentionOS, rebuild and restart (your data stays)
+  ./aos backup          Back up the database and your workspace now (schedule it: docs/install.md#backups)
+  ./aos stop | start | restart
+  ./aos claude-login    Sign in to Claude (your agents run on your Claude plan)
+  ./aos doctor          Check the setup and say how to fix anything that's off
+  ./aos access-key      Print Studio's access key (for signing in on another device)
+  ./aos claude          Claude Code inside AttentionOS, in your workspace (add arguments, e.g. ./aos claude -p "hi")
+  ./aos cli <args>      Any attentionos command inside the container, e.g. ./aos cli run knowledge.index-workspace
+  ./aos shell           A terminal inside the AttentionOS container
+  ./aos uninstall       Remove AttentionOS (asks before deleting anything of yours)
+EOF
+    ;;
+esac

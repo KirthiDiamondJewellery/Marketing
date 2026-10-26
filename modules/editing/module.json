@@ -1,0 +1,13 @@
+{
+  "id": "editing",
+  "name": "Editing",
+  "description": "The Art Director: turns raw footage into a post-ready reel. Prep and a reviewable cut list, an edit plan written from a format template and your house style, a deterministic render, loudness finishing, QC and a revision loop by reference (rf-12 v2).",
+  "agent": "art_director",
+  "tier": "default",
+  "level": 2,
+  "dependsOn": [],
+  "requiredProviders": ["asr"],
+  "optionalProviders": ["notifier", "storage"],
+  "schedules": {},
+  "requiresAcknowledgement": []
+}

@@ -1,0 +1,35 @@
+# Call-to-action model for coaches and consultants.
+# CTA type options: comment_keyword, dm_keyword, link_in_bio, follow, save_share, book_call, none
+
+byFunnelStage:
+  tofu:
+    default: follow
+    alternatives: [save_share, comment_keyword]
+    guidance: Ask for the follow by naming what they'll get next ("Follow for the other two"). Keep it under one line.
+  mofu:
+    default: comment_keyword
+    alternatives: [save_share]
+    guidance: Offer the guide that goes one step deeper than the video. The keyword sends it by DM.
+  bofu:
+    default: book_call
+    alternatives: [comment_keyword, dm_keyword]
+    guidance: One clear next step, who it's for, and what happens on the call. No pressure language.
+
+keywords:
+  rules:
+    - 4 to 9 letters, letters only.
+    - Never reused, and never a substring of another keyword (and no other keyword inside it).
+    - Not a word that appears in the script, so normal comments don't trigger the DM.
+    - Easy to spell after hearing it once.
+  examples: [PLAYBOOK, CHECKUP, ROADMAP]
+
+leadMagnetIdeas:
+  - A one-page checklist for the step the video covered.
+  - A short scorecard that tells the reader where they stand.
+  - A template or script they can copy (an intake form, an email, an agenda).
+  - A recorded walkthrough of one part of your method.
+  - The questions to ask before hiring someone like you.
+
+tracking:
+  utmContent: "<keyword>_<post number>"
+  note: Every post's link carries utm_content so leads and bookings trace back to the post that earned them.

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "7e000000-0000-4000-8000-000000000001",
+    "source_id": "news-example",
+    "external_id": "demo-trend-001",
+    "title": "New rules change how small firms invoice clients",
+    "url": "https://news.example.com/invoicing-rules",
+    "published_at": "2026-10-12T12:40:00.000Z",
+    "comments": 48,
+    "velocity": 31.5,
+    "heat": 0.91,
+    "relevance": 0.94,
+    "status": "kit",
+    "story": {
+      "header": "Your invoices might change next month",
+      "beats": [
+        {
+          "text": "New rules change how small firms invoice.",
+          "visual": "headline screenshot"
+        },
+        {
+          "text": "What it means for you, in one line.",
+          "visual": "to camera"
+        }
+      ]
+    },
+    "first_seen_at": "2026-10-12T13:00:00.000Z"
+  }
+]

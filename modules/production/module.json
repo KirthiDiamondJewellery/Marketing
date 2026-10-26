@@ -1,0 +1,15 @@
+{
+  "id": "production",
+  "name": "Production",
+  "description": "The daily loop from script to post: what to film today, bulk upload of takes matched to their scripts, an edit queue that runs prep, plan and render on its own, video approvals with timestamped notes, and scheduling once you approve.",
+  "agent": "art_director",
+  "tier": "default",
+  "level": 2,
+  "dependsOn": [],
+  "requiredProviders": [],
+  "optionalProviders": ["asr", "publisher", "notifier"],
+  "schedules": {
+    "production.advance": "*/10 * * * *"
+  },
+  "requiresAcknowledgement": []
+}

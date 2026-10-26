@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "attentionos": {
+      "command": "attentionos",
+      "args": ["mcp"],
+      "env": {}
+    }
+  }
+}

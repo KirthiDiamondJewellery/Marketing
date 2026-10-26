@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1300000000000000008",
+    "channel_id": "1200000000000000001",
+    "content": "Copywriter drafted Thursday's script: 3 permit mistakes.\n\nReact to choose: ✅ approve · ❌ reject\n\nref ap-7",
+    "timestamp": "2026-10-13T13:30:00.000000+00:00",
+    "author": { "id": "1000000000000000099", "username": "attention-bot", "bot": true },
+    "attachments": [],
+    "embeds": [{ "footer": { "text": "actions ✅=approve:ap-7 ❌=reject:ap-7" } }],
+    "reactions": [
+      { "count": 1, "me": true, "emoji": { "id": null, "name": "❌" } },
+      { "count": 2, "me": true, "emoji": { "id": null, "name": "✅" } }
+    ]
+  },
+  {
+    "id": "1300000000000000007",
+    "channel_id": "1200000000000000001",
+    "content": "Publisher queued 4 posts for next week.\n\nReact to choose: ✅ approve · ❌ reject\n\nref ap-6",
+    "timestamp": "2026-10-13T13:20:00.000000+00:00",
+    "author": { "id": "1000000000000000099", "username": "attention-bot", "bot": true },
+    "attachments": [],
+    "embeds": [{ "footer": { "text": "actions ✅=approve:ap-6 ❌=reject:ap-6" } }],
+    "reactions": [
+      { "count": 1, "me": true, "emoji": { "id": null, "name": "✅" } },
+      { "count": 1, "me": true, "emoji": { "id": null, "name": "❌" } }
+    ]
+  }
+]

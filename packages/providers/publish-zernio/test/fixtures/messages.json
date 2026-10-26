@@ -1,0 +1,4 @@
+{ "messages": [
+  { "id": "6a0f1c2d3e4f5a6b7c8d9d02", "text": "Thanks! Do you run workshops for teams?", "direction": "incoming", "createdAt": "2026-10-09T15:00:00.000Z", "platform": "instagram", "sender": { "id": "17841400000000777", "username": "demo_reader_1" } },
+  { "id": "6a0f1c2d3e4f5a6b7c8d9d01", "text": "Here's the stitching guide.", "direction": "outgoing", "createdAt": "2026-10-09T14:55:00.000Z", "platform": "instagram", "sender": { "id": "17840000000000001", "username": "examplebrand.studio" } }
+] }

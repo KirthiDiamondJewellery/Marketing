@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  # Cancel superseded PR runs, but let every push to main finish.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  node:
+    name: Typecheck, guard and tests (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        # The minimum supported line (engines: >=22.18) and the version the Docker image runs.
+        node: [22, 24]
+    services:
+      postgres:
+        # pgvector is required: the knowledge store (ADR-15) lives in the same database.
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      ATTENTIONOS_TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+      # Test suites that need the database or media tools fail instead of skipping when CI is set.
+      CI: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      # ffmpeg and uv let the media and speech-to-text tests run instead of skipping.
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Brand-literal guard
+        env:
+          # Maintainers keep the real deny-list in a repository secret; forks run with the public placeholders.
+          PRIVATE_DENYLIST: ${{ secrets.ATTENTIONOS_DENYLIST }}
+        run: |
+          if [ -n "$PRIVATE_DENYLIST" ]; then
+            printf '%s\n' "$PRIVATE_DENYLIST" > "$RUNNER_TEMP/private.deny"
+            export ATTENTIONOS_DENYLIST="$RUNNER_TEMP/private.deny"
+          fi
+          node scripts/brand-literal-guard.mjs
+
+      - name: Tests
+        run: pnpm test
+
+      - name: Plugin is up to date
+        run: pnpm plugin:build --check
+
+  media-py:
+    name: media-py (ruff and pytest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: media-py
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Ruff
+        run: uv run ruff check . && uv run ruff format --check .
+
+      - name: Pytest
+        run: uv run pytest

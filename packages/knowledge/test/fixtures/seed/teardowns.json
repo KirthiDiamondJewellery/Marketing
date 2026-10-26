@@ -1,0 +1,11 @@
+[
+  {
+    "id": "7d000000-0000-4000-8000-000000000001",
+    "external_post_id": "e0000000-0000-4000-8000-000000000001",
+    "platform": "instagram",
+    "author_handle": "@demo_creator_a",
+    "url": "https://demo.example/instagram/demo_creator_a/1",
+    "analysis_md": "# Teardown\\n\\n## Hook\\n- 0.0s: face close, the claim on screen.\\n\\n## Pacing\\nAbout 2.7 words per second.\\n\\n## What's theirs, don't copy\\nTheir props and exact wording. The structure is reusable.",
+    "created_at": "2026-10-11T12:00:00.000Z"
+  }
+]

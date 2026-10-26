@@ -1,0 +1,1 @@
+{ "error": "Another app controls this thread", "type": "platform_error", "code": "not_thread_owner" }

@@ -1,0 +1,7 @@
+{
+  "Version": "1.102.4-tdemo",
+  "BackendState": "Stopped",
+  "TailscaleIPs": null,
+  "Self": { "HostName": "studio-vps", "DNSName": "", "TailscaleIPs": null, "Online": false },
+  "CurrentTailnet": null
+}

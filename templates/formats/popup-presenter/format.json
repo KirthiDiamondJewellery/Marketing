@@ -1,0 +1,98 @@
+{
+  "$schema": "../format.schema.json",
+  "id": "popup-presenter",
+  "version": 1,
+  "name": "Pop-up presenter",
+  "summary": "Visuals fill the screen while you narrate; you pop up in a window for the key lines.",
+  "bestFor": [
+    "Explainers with lots to show: a process, a list, a walkthrough",
+    "Turning a voiceover-heavy script into something watchable",
+    "When the visuals carry the story and your face adds emphasis"
+  ],
+  "needs": [
+    "One vertical take to camera (it doubles as the voiceover)",
+    "Visuals for most of the lines: recordings, screenshots, stills"
+  ],
+  "layout": {
+    "default": "fullVisual",
+    "modes": [
+      { "mode": "full", "use": "The hook and the close: face only." },
+      { "mode": "fullVisual", "use": "Most of the video: the visual fills the frame while you narrate." },
+      {
+        "mode": "inset",
+        "use": "1.5 to 4 s pop-ups in a rounded window at the bottom, on the lines that carry the opinion or the turn."
+      }
+    ],
+    "fullVisualShare": { "min": 0.33, "max": 0.75 },
+    "inset": { "scale": 0.42, "anchor": "bottom-center", "key": false },
+    "visualChangeEveryS": [2, 5]
+  },
+  "captions": {
+    "style": "boxed",
+    "position": "lower",
+    "safeZone": "universal",
+    "maxWords": 4,
+    "emphasisPerLine": [0, 1]
+  },
+  "overlaySlots": [
+    { "kind": "headline", "when": "The hook (frame 1) and each section title.", "max": 3, "evidenceRequired": false },
+    { "kind": "chart", "when": "A number that changed, shown as bars.", "max": 2, "evidenceRequired": true },
+    { "kind": "screenshot", "when": "A source or a result.", "max": 4, "evidenceRequired": true },
+    {
+      "kind": "lower-third",
+      "when": "Optional, at the first pop-up: who you are.",
+      "max": 1,
+      "evidenceRequired": false
+    }
+  ],
+  "pacing": {
+    "targetLengthS": [30, 75],
+    "hookBy": 3,
+    "maxPauseS": 0.15,
+    "p90PauseS": 0.1,
+    "cut": {
+      "strictDb": -42,
+      "broadDb": -35,
+      "wordPadS": 0.05,
+      "hookProtectS": 0.6,
+      "minKeepS": 0.2,
+      "retakes": true,
+      "editNotes": true,
+      "restarts": true,
+      "fillers": true,
+      "fillerIslands": true,
+      "sentencePauseS": 0.1
+    },
+    "notes": ["Pop the presenter up on the opinion, the turn and the call to action; keep visuals on the facts."]
+  },
+  "audio": {
+    "sfx": "sparse",
+    "music": "optional",
+    "notes": ["A pop when the presenter window appears; a soft whoosh on section titles."]
+  },
+  "camera": { "punchIns": false, "push": true },
+  "motion": { "hookPush": true },
+  "look": { "color": "auto", "grade": "none", "sharpen": "auto" },
+  "broll": {
+    "stills": 8,
+    "loops": 6,
+    "notes": ["Budget: at most 8 stills and 6 loops per video.", "Log the source and license of every visual."]
+  },
+  "evidence": [
+    {
+      "choice": "Visuals carry the facts",
+      "why": "Viewers follow a process better when they see each step than when they hear it described.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Presenter on the key lines",
+      "why": "A face on the opinion and the call to action builds trust and keeps it personal.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Boxed captions",
+      "why": "Caption boxes stay readable over busy, changing visuals.",
+      "strength": "moderate"
+    }
+  ]
+}

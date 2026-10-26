@@ -1,0 +1,16 @@
+{
+  "id": "scripting",
+  "name": "Scripting",
+  "description": "The Copywriter: hook banks with provenance, a named hook-pattern taxonomy, 6-beat scripts with a claim ledger, per-platform captions and weekly text posts. Every script passes the code validators before a person reviews it.",
+  "agent": "copywriter",
+  "tier": "core",
+  "level": 1,
+  "dependsOn": [],
+  "requiredProviders": [],
+  "optionalProviders": [],
+  "schedules": {
+    "scripting.harvest-hooks": "30 5 * * *",
+    "scripting.text-posts": "0 9 * * 1"
+  },
+  "requiresAcknowledgement": []
+}

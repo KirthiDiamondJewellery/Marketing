@@ -1,0 +1,29 @@
+{
+  "enabledMcpjsonServers": ["attentionos"],
+  "extraKnownMarketplaces": {
+    "attentionos": {
+      "source": { "source": "github", "repo": "evanbaker315/AttentionOS" }
+    }
+  },
+  "enabledPlugins": {
+    "attentionos@attentionos": true
+  },
+  "permissions": {
+    "allow": [
+      "Read(brand/**)",
+      "Edit(brand/**)",
+      "Write(brand/**)",
+      "Read(config/**)",
+      "Read(media/**)",
+      "Bash(attentionos doctor)",
+      "Bash(attentionos doctor *)",
+      "Bash(../aos doctor)",
+      "Bash(../aos doctor *)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.attentionos/**)"
+    ]
+  }
+}

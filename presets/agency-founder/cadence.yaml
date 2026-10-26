@@ -1,0 +1,71 @@
+# Posting cadence for agency founders. Times are local to the workspace timezone (24-hour clock).
+# Publishing reads this as the default; your config and the learn module adjust it over time.
+#
+# Evidence strength:
+#   STRONG  stated by the platform or confirmed broadly
+#   MEDIUM  consistent practitioner reports; verify on your own data
+#   WEAK    directional only; treat as a starting guess
+
+weeklyTarget:
+  shortVideos: 9
+  textPosts: 7 # agency buyers read LinkedIn and X; text posts carry more weight here
+
+platforms:
+  instagram:
+    postsPerWeek: 5
+    slots: ["08:00", "12:30", "18:00"]
+    mode: assist
+    rules:
+      - Main feed defaults to assist; switch to autopost in the publishing settings.
+      - Every reel carries a comment keyword when the CTA is comment_keyword.
+  linkedin:
+    postsPerWeek: 5
+    slots: ["08:00"]
+    rules:
+      - One post per weekday, never two inside 24 hours.
+      - Text or document posts most days; video at most twice a week.
+      - Tuesday to Thursday mornings tend to be strongest. Skip weekends.
+  youtube:
+    postsPerWeek: 5
+    slots: ["12:00", "19:00"]
+    rules:
+      - Title comes from the hook, under 100 characters.
+  x:
+    postsPerWeek: 10
+    slots: ["09:30", "13:00", "16:30"]
+    rules:
+      - Every reel as native video, plus text posts.
+      - No link in the body; put links in a reply.
+  tiktok:
+    postsPerWeek: 4
+    slots: ["08:30", "19:30"]
+    rules:
+      - Post clean masters only, never a file with another app's watermark.
+  threads:
+    postsPerWeek: 7
+    slots: ["09:00", "13:00", "18:00"]
+    rules:
+      - Space posts a few hours apart.
+  facebook:
+    postsPerWeek: 2
+    slots: ["08:00"]
+    rules:
+      - Own original footage only.
+
+evidence:
+  - claim: X shows posts with a link in the body to fewer people.
+    strength: STRONG
+  - claim: Posting more short videos does not cut reach per post on Instagram.
+    strength: STRONG
+  - claim: Two LinkedIn posts inside 24 hours compete with each other.
+    strength: MEDIUM
+  - claim: On personal LinkedIn profiles, text and documents reach more people than video.
+    strength: MEDIUM
+  - claim: The exact best hours to post on each platform.
+    strength: WEAK
+    note: Slots are starting guesses. The learn module measures your own posting slots and shifts them.
+
+crossPosting:
+  - No platform penalises a video for existing elsewhere. Penalties come from watermarks, wrong aspect ratios and pasted captions.
+  - Rewrite the caption per platform from the same transcript.
+  - Swap comment-keyword CTAs for a link line on platforms without a DM automation.

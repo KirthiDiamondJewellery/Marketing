@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Local font stacks keep source builds and the UI independent of Google Fonts availability. */
+:root {
+  --font-inter: "Inter", ui-sans-serif;
+  --font-sora: "Sora", ui-sans-serif;
+  --font-geist-mono: "Geist Mono", ui-monospace;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--text-primary);
+  --color-fg-2: var(--text-secondary);
+  --color-fg-3: var(--text-muted);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-fg: var(--brand-fg);
+  --color-brand-tint: var(--brand-tint);
+  --color-on-brand: var(--on-brand);
+  --color-on-tint: var(--text-on-tint);
+  --color-gold: var(--accent-gold);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --text-display-xl: 56px;
+  --text-display-xl--line-height: 60px;
+  --text-display-l: 40px;
+  --text-display-l--line-height: 44px;
+  --text-h1: 28px;
+  --text-h1--line-height: 34px;
+  --text-h2: 20px;
+  --text-h2--line-height: 28px;
+  --text-h3: 16px;
+  --text-h3--line-height: 24px;
+  --text-body: 15px;
+  --text-body--line-height: 24px;
+  --text-small: 13px;
+  --text-small--line-height: 20px;
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-log: 13px;
+  --text-log--line-height: 20px;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 24px;
+}
+
+/* Sora for page and section titles and editorial display; Inter carries the working interface. */
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+.font-display {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-fg);
+  outline-offset: 3px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The Attention Signal: the only place color and motion combine (DESIGN §1). */
+.signal-left {
+  box-shadow: inset 2px 0 0 var(--brand);
+}
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.signal-pulse {
+  animation: signal-pulse 2.4s ease-in-out infinite;
+}
+
+/* Reel mode hides the cursor for clean capture (DESIGN §6.4). */
+[data-reel="on"], [data-reel="on"] * {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-reel="on"]) *,
+  :root:not([data-reel="on"]) *::before,
+  :root:not([data-reel="on"]) *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

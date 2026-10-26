@@ -1,0 +1,4 @@
+[
+  { "id": "post-2", "content_id": "content-1", "platform": "tiktok", "provider": "zernio", "status": "published", "idempotency_key": "seed-post-2", "variant_of": "post-1" },
+  { "id": "post-1", "content_id": "content-1", "platform": "instagram", "provider": "zernio", "status": "published", "idempotency_key": "seed-post-1", "utm_content": "layout_1", "published_at": "@now-3d" }
+]

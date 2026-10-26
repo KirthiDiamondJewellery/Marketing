@@ -1,0 +1,4 @@
+{ "items": [
+  { "id": "c-1", "accountId": "90001", "platform": "instagram", "postId": "771999", "platformPostId": "18000000000000077", "authorId": "17841400000000888", "authorUsername": "demo_reader_3", "isAuthor": false, "text": "stitch", "createdAt": "2026-10-14T12:30:00Z" },
+  { "id": "c-2", "accountId": "90001", "platform": "instagram", "postId": "771999", "platformPostId": "18000000000000077", "authorId": "17840000000000001", "isAuthor": true, "text": "Sent!", "createdAt": "2026-10-14T12:31:00Z" }
+] }

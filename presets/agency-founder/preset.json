@@ -1,0 +1,39 @@
+{
+  "id": "agency-founder",
+  "name": "Agency founder",
+  "version": "0.1.0",
+  "description": "For founders of service agencies (marketing, design, development, automation) who sell retainers and projects to other businesses. Leans on case studies, behind-the-build content and sharp industry takes.",
+  "forWho": [
+    "Marketing, creative and growth agency founders",
+    "Development, automation and AI implementation studios",
+    "Productised service businesses selling to other businesses"
+  ],
+  "files": {
+    "pillars.md": "brand/pillars.md",
+    "sources.yaml": "brand/sources.yaml",
+    "cadence.yaml": "brand/knowledge/preset-cadence.yaml",
+    "cta.yaml": "brand/knowledge/preset-cta.yaml",
+    "formats.md": "brand/knowledge/preset-formats.md"
+  },
+  "funnelMix": { "tofu": 50, "mofu": 30, "bofu": 20 },
+  "northStar": { "metric": "leads_per_week" },
+  "primaryCta": "comment_keyword",
+  "platforms": ["instagram", "linkedin", "youtube", "x"],
+  "evidence": [
+    {
+      "claim": "Buyers of agency services check the founder's content before a sales call.",
+      "strength": "MEDIUM",
+      "note": "Common in practitioner reports; track 'saw your content' in your own call notes to confirm."
+    },
+    {
+      "claim": "Showing real work (screens, dashboards, the build) earns more qualified leads than generic tips.",
+      "strength": "MEDIUM",
+      "note": "Directional. Verify with the learn module's lane comparison after about 20 posts."
+    },
+    {
+      "claim": "On personal LinkedIn profiles, text and document posts reach more people than video.",
+      "strength": "MEDIUM",
+      "note": "Reported consistently; varies by audience."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "attention",
+  "displayName": "AttentionOS",
+  "version": "0.1.0",
+  "description": "Your AI content team in Claude Code: research, plan, script, edit, publish, follow up and learn, with you approving every public step.",
+  "author": {
+    "name": "The AttentionOS Authors",
+    "url": "https://github.com/evanbaker315/AttentionOS"
+  },
+  "homepage": "https://github.com/evanbaker315/AttentionOS#readme",
+  "repository": "https://github.com/evanbaker315/AttentionOS",
+  "license": "MIT",
+  "keywords": [
+    "content",
+    "social-media",
+    "personal-brand",
+    "short-form-video",
+    "marketing",
+    "agents"
+  ]
+}

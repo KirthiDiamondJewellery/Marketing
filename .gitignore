@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.turbo/
+*.tsbuildinfo
+coverage/
+.env
+.env.*
+!.env.example
+.DS_Store
+# media-py
+media-py/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+# local workspaces created while developing
+/workspaces/
+/tmp/
+# Keep repository agent guidance committed.
+# Design tool caches
+.impeccable/
+# Tool-generated agent notes (turbo's agentGuidance is off in turbo.json; CLAUDE.md holds the real rules)
+AGENTS.md

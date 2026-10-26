@@ -1,0 +1,22 @@
+{
+  "name": "@attentionos/module-editing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Art Director module: prep, reviewable cut lists, edit plans from format templates, the cut-engine render, finishing, QC and the revision loop.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/guardrails": "workspace:*",
+    "@attentionos/media": "workspace:*",
+    "@attentionos/module-research": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

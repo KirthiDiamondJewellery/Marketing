@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/provider-shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Vendor-neutral helpers shared by the provider adapters: the retrying HTTP client, a one-shot JSON request, and media upload checks.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/media": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

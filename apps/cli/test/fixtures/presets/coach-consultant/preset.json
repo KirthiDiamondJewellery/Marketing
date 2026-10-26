@@ -1,0 +1,1 @@
+{ "id": "coach-consultant", "funnelMix": { "tofu": 45, "mofu": 35, "bofu": 20 }, "northStar": { "metric": "booked_calls_per_week" }, "files": { "pillars.md": "brand/pillars.md", "cadence.yaml": "brand/knowledge/preset-cadence.yaml" } }

@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/provider-asr-whispercpp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Speech-to-text with word timestamps through whisper.cpp, run locally by the media-py sidecar.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/media": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

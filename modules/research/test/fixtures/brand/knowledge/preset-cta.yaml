@@ -1,0 +1,7 @@
+byFunnelStage:
+  tofu:
+    default: follow
+  mofu:
+    default: comment_keyword
+  bofu:
+    default: book_call

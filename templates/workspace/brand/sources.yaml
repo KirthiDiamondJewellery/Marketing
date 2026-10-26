@@ -1,0 +1,19 @@
+# News and trend sources for your niche. The trend radar checks these and scores what's heating up.
+# Your preset filled in starting sources. TODO: add industry feeds and searches you trust.
+#
+# kind options:
+#   google_news  target is a search query, e.g. "small business pricing"
+#   rss          target is a feed URL
+#   reddit       target is a subreddit name, e.g. "smallbusiness"
+#   hn           target is a search query on Hacker News
+#   github       target is a topic or language
+#   x_apify      target is a list of X accounts (needs Apify)
+#
+# weight raises or lowers how much a source counts (1 is normal). enabled: false pauses a source.
+
+sources:
+  - id: niche-news
+    kind: google_news
+    target: "small business marketing"
+    weight: 1
+    enabled: true

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "7420000000000000001",
+    "text": "Deck footing depth explained #builder",
+    "createTimeISO": "2026-10-07T18:30:00.000Z",
+    "webVideoUrl": "https://www.tiktok.com/@demo_creator_b/video/7420000000000000001",
+    "playCount": 125000,
+    "diggCount": 9100,
+    "commentCount": 220,
+    "shareCount": 310,
+    "isPinned": false,
+    "authorMeta": { "name": "demo_creator_b", "nickName": "Demo Creator B", "fans": 48200, "following": 310, "heart": 2100000, "video": 212 },
+    "videoMeta": { "duration": 34, "coverUrl": "https://cdn.example.invalid/c1.jpg" },
+    "mediaUrls": []
+  },
+  {
+    "id": "7420000000000000002",
+    "text": "pov: the inspector shows up early",
+    "createTime": 1791000000,
+    "playCount": 64000,
+    "diggCount": 5000,
+    "commentCount": 80,
+    "shareCount": 12,
+    "authorMeta": { "name": "demo_creator_b" },
+    "videoMeta": { "duration": 7 }
+  }
+]

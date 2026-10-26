@@ -1,0 +1,4 @@
+# Created when the stack runs straight from this folder (docker compose in deploy/).
+.env
+workspace/
+backups/

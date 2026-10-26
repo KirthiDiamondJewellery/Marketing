@@ -1,0 +1,17 @@
+{
+  "name": "attentionos",
+  "description": "AttentionOS: the open-source content operating system for business owners who build a personal brand.",
+  "owner": {
+    "name": "The AttentionOS Authors",
+    "url": "https://github.com/evanbaker315/AttentionOS"
+  },
+  "plugins": [
+    {
+      "name": "attentionos",
+      "source": "./plugin",
+      "description": "Your AI content team in Claude Code: research, plan, script, edit, publish, follow up and learn, with you approving every public step. Commands are /attention:*.",
+      "category": "productivity",
+      "tags": ["content", "social-media", "personal-brand", "marketing"]
+    }
+  ]
+}

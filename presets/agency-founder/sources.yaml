@@ -1,0 +1,39 @@
+# Starting trend sources for agency founders. Generic marketing, platform and AI news.
+# Add searches for your speciality (paid ads, web design, automation, your client industry) after onboarding.
+
+sources:
+  - id: news-social-platforms
+    kind: google_news
+    target: "Instagram OR TikTok OR LinkedIn new feature for businesses"
+    weight: 1
+    enabled: true
+  - id: news-marketing-industry
+    kind: google_news
+    target: "marketing agency industry report"
+    weight: 1
+    enabled: true
+  - id: news-ai-business
+    kind: google_news
+    target: "AI tools small business adoption"
+    weight: 1
+    enabled: true
+  - id: news-ad-costs
+    kind: google_news
+    target: "digital advertising costs report"
+    weight: 0.7
+    enabled: true
+  - id: hn-front
+    kind: hn
+    target: "marketing OR automation OR startup"
+    weight: 0.6
+    enabled: true
+  - id: reddit-marketing
+    kind: reddit
+    target: "marketing"
+    weight: 0.8
+    enabled: true
+  - id: reddit-agency
+    kind: reddit
+    target: "agency"
+    weight: 0.8
+    enabled: true

@@ -1,0 +1,1 @@
+{ "error": "This content was already posted to this account in the last 24 hours", "type": "invalid_request_error", "code": "duplicate_content", "details": { "existingPostId": "6a0f1c2d3e4f5a6b7c8d9f10" } }

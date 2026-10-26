@@ -1,0 +1,23 @@
+{
+  "name": "@attentionos/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Autopilot: queue worker, scheduler and webhook receiver.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/mcp": "workspace:*",
+    "@attentionos/runner": "workspace:*",
+    "@attentionos/runtime": "workspace:*",
+    "croner": "^10.0.1",
+    "zod": "^4.6.5"
+  }
+}

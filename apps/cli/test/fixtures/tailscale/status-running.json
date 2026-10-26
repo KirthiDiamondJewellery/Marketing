@@ -1,0 +1,20 @@
+{
+  "Version": "1.102.4-tdemo",
+  "TUN": true,
+  "BackendState": "Running",
+  "HaveNodeKey": true,
+  "AuthURL": "",
+  "TailscaleIPs": ["100.101.102.103", "fd7a:115c:a1e0::1234:5678"],
+  "Self": {
+    "ID": "nDEMO1CNTRL",
+    "PublicKey": "nodekey:0000000000000000000000000000000000000000000000000000000000000000",
+    "HostName": "studio-vps",
+    "DNSName": "studio-vps.example-tailnet.ts.net.",
+    "OS": "linux",
+    "TailscaleIPs": ["100.101.102.103", "fd7a:115c:a1e0::1234:5678"],
+    "Online": true
+  },
+  "MagicDNSSuffix": "example-tailnet.ts.net",
+  "CurrentTailnet": { "Name": "owner@example.com", "MagicDNSSuffix": "example-tailnet.ts.net", "MagicDNSEnabled": true },
+  "Peer": {}
+}

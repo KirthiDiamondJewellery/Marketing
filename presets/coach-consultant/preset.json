@@ -1,0 +1,39 @@
+{
+  "id": "coach-consultant",
+  "name": "Coach or consultant",
+  "version": "0.1.0",
+  "description": "For coaches and consultants who sell expertise through calls, programs or retainers. Leans on client proof, frameworks and answering real buyer questions.",
+  "forWho": [
+    "Business, career, health and executive coaches",
+    "Independent consultants and advisors",
+    "Service businesses where the owner is the expertise (coaching, financial planning, fitness)"
+  ],
+  "files": {
+    "pillars.md": "brand/pillars.md",
+    "sources.yaml": "brand/sources.yaml",
+    "cadence.yaml": "brand/knowledge/preset-cadence.yaml",
+    "cta.yaml": "brand/knowledge/preset-cta.yaml",
+    "formats.md": "brand/knowledge/preset-formats.md"
+  },
+  "funnelMix": { "tofu": 45, "mofu": 35, "bofu": 20 },
+  "northStar": { "metric": "booked_calls_per_week" },
+  "primaryCta": "comment_keyword",
+  "platforms": ["instagram", "tiktok", "youtube", "linkedin"],
+  "evidence": [
+    {
+      "claim": "Trust content (questions answered, process shown) does more for a high-ticket sale than reach content.",
+      "strength": "MEDIUM",
+      "note": "Consistent with how considered purchases work; measure it on your own data with the learn module before leaning harder."
+    },
+    {
+      "claim": "Comment-a-keyword calls to action out-convert 'link in bio' on Instagram.",
+      "strength": "MEDIUM",
+      "note": "Widely reported by practitioners; depends on a working comment-to-DM automation."
+    },
+    {
+      "claim": "Posting more short videos does not reduce reach per post on Instagram.",
+      "strength": "STRONG",
+      "note": "Stated publicly by the platform. Watch your own views per post if volume goes up."
+    }
+  ]
+}

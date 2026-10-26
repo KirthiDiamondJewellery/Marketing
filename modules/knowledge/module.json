@@ -1,0 +1,15 @@
+{
+  "id": "knowledge",
+  "name": "Knowledge",
+  "description": "Keeps a searchable memory of your Brand Kit, your posts and scripts, research, hooks, post-mortems and lessons, inside your own database, so every agent can look things up by meaning or by keyword.",
+  "agent": "analyst",
+  "tier": "core",
+  "level": 1,
+  "dependsOn": [],
+  "requiredProviders": [],
+  "optionalProviders": [],
+  "schedules": {
+    "knowledge.index-workspace": "25 * * * *"
+  },
+  "requiresAcknowledgement": []
+}

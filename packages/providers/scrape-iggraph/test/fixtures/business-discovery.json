@@ -1,0 +1,38 @@
+{
+  "business_discovery": {
+    "username": "demo_creator_a",
+    "followers_count": 48200,
+    "media_count": 311,
+    "media": {
+      "data": [
+        {
+          "id": "17900000000000001",
+          "caption": "Footings, forms and the one inspection you can't skip",
+          "media_type": "VIDEO",
+          "media_product_type": "REELS",
+          "like_count": 1830,
+          "comments_count": 214,
+          "view_count": 61000,
+          "timestamp": "2026-10-06T16:00:00+0000",
+          "permalink": "https://www.instagram.com/reel/DemoGraph01/",
+          "thumbnail_url": "https://cdn.example.invalid/g1.jpg",
+          "media_url": "https://cdn.example.invalid/g1.mp4"
+        },
+        {
+          "id": "17900000000000002",
+          "caption": "Before and after: a 1950s kitchen",
+          "media_type": "CAROUSEL_ALBUM",
+          "media_product_type": "FEED",
+          "like_count": 920,
+          "comments_count": 33,
+          "timestamp": "2026-09-01T16:00:00+0000",
+          "permalink": "https://www.instagram.com/p/DemoGraph02/",
+          "media_url": "https://cdn.example.invalid/g2.jpg"
+        },
+        { "caption": "missing id and timestamp" }
+      ],
+      "paging": { "cursors": { "after": "QVFIDemo" } }
+    }
+  },
+  "id": "17841400000000000"
+}

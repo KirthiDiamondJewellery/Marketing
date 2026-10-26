@@ -1,0 +1,24 @@
+{
+  "name": "@attentionos/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Migration runner, workspace bootstrap and demo seed loader for AttentionOS.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./testing": "./src/testing.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "postgres": "^3.4.9",
+    "zod": "^4.6.5"
+  },
+  "files": [
+    "src",
+    "migrations"
+  ]
+}

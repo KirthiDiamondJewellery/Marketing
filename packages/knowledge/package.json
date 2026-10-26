@@ -1,0 +1,25 @@
+{
+  "name": "@attentionos/knowledge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The local knowledge store: chunking, local or API embeddings, indexing and hybrid (meaning + keyword) search inside Postgres with pgvector.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./testing": "./src/testing.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/media": "workspace:*",
+    "postgres": "^3.4.9",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@attentionos/db": "workspace:*"
+  }
+}

@@ -1,0 +1,66 @@
+[project]
+name = "attentionos-media"
+version = "0.1.0"
+description = "AttentionOS media sidecar: probe, prep, ASR, cut planning, the cut-engine renderer, finishing and QC. JSON in, JSON out."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "numpy>=2.1",
+  "pillow>=11.0",
+  "pydantic>=2.9",
+  # Signal processing for the audio chain (K-weighted loudness, true-peak oversampling, filters).
+  "scipy>=1.14",
+  # Fuzzy take matching for "last full take wins" (falls back to difflib if missing).
+  "rapidfuzz>=3.9",
+]
+
+[project.optional-dependencies]
+# whisper.cpp through prebuilt Python wheels (macOS, Linux, Windows). The default ASR engine.
+asr = ["pywhispercpp>=1.3"]
+# Parakeet TDT through sherpa-onnx. Optional alternative ASR engine.
+parakeet = ["sherpa-onnx>=1.10"]
+# Face-aware framing (YuNet with a Haar-cascade fallback). Without it, framing is centred.
+vision = ["opencv-python-headless>=4.10"]
+embed = [
+    "fastembed>=0.7",
+]
+
+[project.scripts]
+attentionos-media = "attentionos_media.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.8",
+  "jsonschema>=4.23",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/attentionos_media"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["E501", "RUF001", "RUF002", "RUF003"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+  "slow: renders or encodes video (seconds each)",
+  "asr: needs a real ASR model download (opt-in with ATTENTIONOS_TEST_ASR=1)",
+]
+
+[tool.uv]
+# fastembed (embed extra) caps pillow below 13, but we only use its text models, which never import Pillow.
+# Pillow 13 fixes the CVEs pip-audit reports against 12.x. Drop this once fastembed allows 13.
+override-dependencies = ["pillow>=13"]

@@ -1,0 +1,4 @@
+{ "automations": [
+  { "_id": "6a0f1c2d3e4f5a6b7c8d9a01", "accountId": "6a0f1c2d3e4f5a6b7c8d9e01", "keywords": ["stitch", "Stitch", "STITCH"], "platformPostId": "18000000000000042", "isActive": true },
+  { "_id": "6a0f1c2d3e4f5a6b7c8d9a02", "accountId": "6a0f1c2d3e4f5a6b7c8d9e09", "keywords": ["other"], "isActive": true }
+] }

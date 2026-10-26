@@ -1,0 +1,4 @@
+[
+  { "id": "content-1", "title": "Three layout mistakes Examplebrand Studio fixes every month", "status": "published", "lane": "myth_bust", "funnel_stage": "tofu", "hook_id": "hook-1", "keyword_id": "kw-1", "source_refs": [{ "type": "manual", "id": "note-1" }], "brief": { "header": "Layout mistakes" }, "created_by": "agent:strategist", "published_at": "@now-3d" },
+  { "id": "content-2", "title": "Behind the build: kitchen wall move", "status": "idea", "lane": "behind_the_scenes", "funnel_stage": "mofu" }
+]

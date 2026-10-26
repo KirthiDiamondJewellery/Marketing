@@ -1,0 +1,4 @@
+{ "conversations": [
+  { "id": "6a0f1c2d3e4f5a6b7c8d9c01", "updatedAt": "2026-10-09T15:00:00.000Z", "participant": { "id": "17841400000000777", "username": "demo_reader_1", "name": "Demo Reader" } },
+  { "id": "6a0f1c2d3e4f5a6b7c8d9c02", "updatedAt": "2026-10-01T09:00:00.000Z", "participantUsername": "demo_reader_2" }
+] }

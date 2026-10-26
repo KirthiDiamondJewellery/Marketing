@@ -1,0 +1,13 @@
+# Footage, renders and downloaded assets are large and private.
+media/
+
+# Secrets.
+.env
+.env.*
+!.env.example
+
+# Local caches, tokens and cursors written by AttentionOS.
+.attentionos/
+
+node_modules/
+.DS_Store

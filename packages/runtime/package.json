@@ -1,0 +1,21 @@
+{
+  "name": "@attentionos/runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Loads a workspace (config, .env, Brand Kit, database, providers, modules) into a WorkspaceContext.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "jiti": "^2.7.0",
+    "postgres": "^3.4.9",
+    "zod": "^4.6.5",
+    "@attentionos/db": "workspace:*"
+  }
+}

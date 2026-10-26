@@ -1,0 +1,34 @@
+# Starting trend sources for coaches and consultants. Google News queries are generic on purpose:
+# add your own niche terms (your industry, your city, the problem you solve) after onboarding.
+
+sources:
+  - id: news-small-business
+    kind: google_news
+    target: "small business owners survey"
+    weight: 1
+    enabled: true
+  - id: news-workplace
+    kind: google_news
+    target: "workplace burnout study"
+    weight: 1
+    enabled: true
+  - id: news-leadership
+    kind: google_news
+    target: "leadership research new study"
+    weight: 0.8
+    enabled: true
+  - id: news-consumer-spending
+    kind: google_news
+    target: "consumer spending report"
+    weight: 0.6
+    enabled: true
+  - id: reddit-entrepreneur
+    kind: reddit
+    target: "Entrepreneur"
+    weight: 0.8
+    enabled: true
+  - id: reddit-smallbusiness
+    kind: reddit
+    target: "smallbusiness"
+    weight: 0.8
+    enabled: true

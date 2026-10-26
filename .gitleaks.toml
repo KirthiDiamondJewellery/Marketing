@@ -1,0 +1,74 @@
+# gitleaks v8 configuration for AttentionOS.
+# Extends the default rule set with tokens for the services AttentionOS connects to.
+
+title = "AttentionOS gitleaks config"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "telegram-bot-token"
+description = "Telegram bot token"
+regex = '''\b[0-9]{8,10}:[A-Za-z0-9_-]{35}\b'''
+tags = ["telegram", "token"]
+
+[[rules]]
+id = "discord-bot-token"
+description = "Discord bot token"
+regex = '''\b[MNO][A-Za-z0-9_-]{23,27}\.[A-Za-z0-9_-]{6}\.[A-Za-z0-9_-]{27,40}\b'''
+tags = ["discord", "token"]
+
+[[rules]]
+id = "anthropic-api-key"
+description = "Anthropic API key"
+regex = '''\bsk-ant-(?:api|admin)[0-9]{2}-[A-Za-z0-9_-]{80,}\b'''
+keywords = ["sk-ant-"]
+tags = ["anthropic", "key"]
+
+[[rules]]
+id = "anthropic-oauth-token"
+description = "Claude Code OAuth token"
+regex = '''\bsk-ant-oat[0-9]{2}-[A-Za-z0-9_-]{40,}\b'''
+keywords = ["sk-ant-oat"]
+tags = ["anthropic", "token"]
+
+[[rules]]
+id = "apify-token"
+description = "Apify API token"
+regex = '''\bapify_api_[A-Za-z0-9]{30,}\b'''
+keywords = ["apify_api_"]
+tags = ["apify", "token"]
+
+[[rules]]
+id = "zernio-api-key"
+description = "Zernio API key assignment"
+regex = '''(?i)\bzernio[_-]?api[_-]?key\b\s*[:=]\s*["']?([A-Za-z0-9_\-.]{20,})'''
+secretGroup = 1
+keywords = ["zernio"]
+tags = ["zernio", "key"]
+
+[[rules]]
+id = "blotato-api-key"
+description = "Blotato API key assignment"
+regex = '''(?i)\bblotato[_-]?api[_-]?key\b\s*[:=]\s*["']?([A-Za-z0-9_\-.]{20,})'''
+secretGroup = 1
+keywords = ["blotato"]
+tags = ["blotato", "key"]
+
+[[rules]]
+id = "instagram-graph-token"
+description = "Instagram or Facebook Graph API access token"
+regex = '''\b(?:EAA|IGQV|IGAA)[A-Za-z0-9]{60,}\b'''
+tags = ["meta", "token"]
+
+[allowlist]
+description = "Dependency lockfile, installed dependencies and fake test credentials"
+paths = [
+  '''(^|/)pnpm-lock\.yaml$''',
+  '''(^|/)node_modules/''',
+]
+# Fake credentials used only in tests (obviously not real keys).
+regexes = [
+  '''k3y-for-tests-[0-9a-f]+''',
+  '''demo-key-with-padding''',
+]

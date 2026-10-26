@@ -1,0 +1,12 @@
+sources:
+  - id: remodel-news
+    kind: google_news
+    target: "home renovation when:2d"
+  - id: industry-feed
+    kind: rss
+    target: https://news.example.org/feed
+    weight: 1.5
+  - id: hn-front
+    kind: hn
+    target: front_page
+    enabled: false

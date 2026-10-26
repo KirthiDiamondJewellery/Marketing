@@ -1,0 +1,13 @@
+{
+  "id": "trial-reels",
+  "name": "Trial reels",
+  "description": "Turns clean reels (no captions, no title) into a day of Instagram trial-reel variations: the same video with a different speed (up to 1.1x), colour, caption style, title style and wording, position and hashtag set. Renders and verifies them, shows you the preview, and schedules them as trial reels only, after your OK.",
+  "agent": "publisher",
+  "tier": "default",
+  "level": 3,
+  "dependsOn": ["editing", "publishing"],
+  "requiredProviders": [],
+  "optionalProviders": ["publisher", "asr", "notifier"],
+  "schedules": {},
+  "requiresAcknowledgement": []
+}

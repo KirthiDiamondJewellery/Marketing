@@ -1,0 +1,4 @@
+{ "total_count": 2, "incomplete_results": false, "items": [
+  { "id": 900000001, "full_name": "demo-org/site-scheduler", "html_url": "https://github.com/demo-org/site-scheduler", "description": "Open-source scheduling for small builders", "stargazers_count": 1290, "forks_count": 40, "created_at": "2026-10-06T10:00:00Z", "owner": { "login": "demo-org" } },
+  { "id": 900000002, "full_name": "demo-user/estimate-kit", "html_url": "https://github.com/demo-user/estimate-kit", "description": null, "stargazers_count": 310, "created_at": "2026-10-08T10:00:00Z" }
+] }

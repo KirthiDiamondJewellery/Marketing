@@ -1,0 +1,81 @@
+# AttentionOS: Studio + Autopilot and its database.
+#
+# Copied into the stack dir next to its .env (see docs/install.md) and driven by `./aos`. By hand, from the folder
+# that holds this file and its .env (copy .env.example to .env and fill it in first):
+#
+#   docker compose up -d --build
+#   docker compose logs -f
+#
+# Studio is published to 127.0.0.1:${AOS_PORT} only (this computer), with no sign-in. To reach it from elsewhere,
+# put your own proxy in front of it and set AOS_STUDIO_AUTH=token so Studio asks for the access key.
+# A docker-compose.override.yml next to this file, if present, is merged in by docker compose and kept by `./aos update`.
+
+name: ${AOS_PROJECT:-attentionos}
+
+x-attentionos: &attentionos
+  image: ${AOS_IMAGE:-attentionos:local}
+  build:
+    # The repo checkout this was installed from (AOS_SRC_DIR in .env; from the repo it's the parent folder).
+    context: ${AOS_SRC_DIR:-..}
+    dockerfile: deploy/Dockerfile
+    args:
+      PNPM_INSTALL_FLAGS: ${AOS_PNPM_INSTALL_FLAGS:---frozen-lockfile}
+  depends_on:
+    postgres:
+      condition: service_healthy
+  volumes:
+    # Your workspace stays a normal folder on the host: Brand Kit, settings, lessons, media.
+    - ${WORKSPACE_DIR:-./workspace}:/workspace
+    # Caches (speech and embedding models, fonts, uv) and Claude Code's own settings.
+    - attentionos-data:/data
+  environment: &attentionos-env
+    DATABASE_URL: postgresql://attentionos:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/attentionos
+    # Your own Claude login, from `claude setup-token` (or `./aos claude-login`). Read at start-up, never baked in.
+    CLAUDE_CODE_OAUTH_TOKEN: ${CLAUDE_CODE_OAUTH_TOKEN:-}
+    # Studio's access key, for devices that sign in with it (AOS_STUDIO_AUTH=token).
+    ATTENTIONOS_STUDIO_TOKEN: ${ATTENTIONOS_STUDIO_TOKEN:?Set ATTENTIONOS_STUDIO_TOKEN in .env}
+    # The stack folder on the host, so Claude Code on your computer can reach the MCP server in here (.mcp.json).
+    ATTENTIONOS_HOST_STACK_DIR: ${AOS_STACK_DIR:-}
+    ATTENTIONOS_PRESET: ${PRESET:-coach-consultant}
+    ATTENTIONOS_BRAND_NAME: ${BRAND_NAME:-My Brand}
+    TZ: ${TZ:-UTC}
+  restart: unless-stopped
+  stop_grace_period: 45s
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: attentionos
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: attentionos
+      TZ: ${TZ:-UTC}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    # Not published to the host: only AttentionOS (on the stack's private network) can reach it.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U attentionos -d attentionos"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    restart: unless-stopped
+    shm_size: 256mb
+
+  attentionos:
+    <<: *attentionos
+    ports:
+      # 127.0.0.1 only: nothing else on your network (or the internet) can reach Studio.
+      - "127.0.0.1:${AOS_PORT:-4747}:4747"
+    environment:
+      <<: *attentionos-env
+      ATTENTIONOS_HOST: 0.0.0.0
+      ATTENTIONOS_SERVICE: attentionos
+      # No sign-in: only valid because the port above is published to 127.0.0.1. Anything that proxies this port to
+      # other devices must set AOS_STUDIO_AUTH=token, so Studio asks for the access key.
+      ATTENTIONOS_STUDIO_AUTH: ${AOS_STUDIO_AUTH:-local}
+      ATTENTIONOS_STUDIO_URL: ${ATTENTIONOS_STUDIO_URL:-http://localhost:${AOS_PORT:-4747}}
+
+volumes:
+  postgres-data:
+  attentionos-data:

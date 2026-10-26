@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "format": "split-demo",
+  "source": {
+    "media": { "path": "/tmp/attentionos-fixture/proxy.mp4", "durationS": 12.5 },
+    "transcript": {
+      "language": "en",
+      "words": [
+        { "text": "Here's", "start": 0.4, "end": 0.7 },
+        { "text": "the", "start": 0.7, "end": 0.8 },
+        { "text": "trick.", "start": 0.8, "end": 1.2 }
+      ]
+    },
+    "timeMap": { "fps": 30, "keepRanges": [{ "start": 0.3, "end": 4.0 }, { "start": 5.0, "end": 11.0 }] }
+  },
+  "layout": {
+    "segments": [
+      { "mode": "full", "start": 0, "dur": 3.0 },
+      { "mode": "split", "start": 3.0, "dur": 4.0, "visual": { "assetId": "screen-1", "in": 1.5 }, "fit": "contain" },
+      { "mode": "inset", "start": 7.0, "dur": 2.7, "visual": { "assetId": "shot-1" }, "inset": { "scale": 0.5, "key": { "color": "#00FF00" } } }
+    ]
+  },
+  "captions": { "style": "bold-pop", "emphasisWords": ["trick"], "safeZone": { "preset": "reels", "bottom": 400 } },
+  "overlays": [
+    { "kind": "headline", "at": 0, "dur": 2.0, "text": "Here's the trick" },
+    { "kind": "chart", "at": 3.5, "dur": 2.0, "text": "Hours per week", "evidenceId": "c1", "props": { "labels": ["Before", "After"], "values": [6, 2] } }
+  ],
+  "broll": [
+    { "assetId": "loop-1", "at": 8.0, "dur": 1.2, "provenance": { "source": "own footage" }, "license": "own" }
+  ],
+  "audio": { "sfx": [{ "kind": "whoosh", "at": 3.0 }], "music": null, "loudness": -14, "truePeak": -1 },
+  "camera": [{ "kind": "push", "at": 0.5, "dur": 2.0, "scale": 1.08 }],
+  "export": { "w": 1080, "h": 1920, "fps": 30 }
+}

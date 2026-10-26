@@ -1,0 +1,16 @@
+items:
+  - id: project-tracker
+    kind: stat
+    title: Project tracker, last year
+    summary: Every project tracked from first quote to final invoice.
+    numbers:
+      - { value: "42", label: projects tracked, source: internal tracker }
+      - { value: "18%", label: fixed-scope projects under first quote, source: internal tracker }
+    tags: [budget]
+  - id: maple-street-kitchen
+    kind: case_study
+    title: Kitchen remodel with a fixed scope
+    summary: A kitchen finished on the first quote after a scope walk-through.
+    numbers:
+      - { value: "6 weeks", label: build time, source: project log }
+    clientConsent: false

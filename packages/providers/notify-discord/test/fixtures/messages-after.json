@@ -1,0 +1,48 @@
+[
+  {
+    "id": "1300000000000000012",
+    "channel_id": "1200000000000000001",
+    "content": "rf-123 v2 trim the intro and add captions earlier",
+    "timestamp": "2026-10-13T14:02:00.000000+00:00",
+    "author": { "id": "1100000000000000001", "username": "demo_owner" },
+    "attachments": [],
+    "embeds": []
+  },
+  {
+    "id": "1300000000000000011",
+    "channel_id": "1200000000000000001",
+    "content": "make it warmer",
+    "timestamp": "2026-10-13T14:01:00.000000+00:00",
+    "author": { "id": "1100000000000000001", "username": "demo_owner" },
+    "attachments": [
+      { "id": "1400000000000000001", "url": "https://cdn.discordapp.example/attachments/take4.mp4", "filename": "take4.mp4", "content_type": "video/mp4" }
+    ],
+    "embeds": [],
+    "referenced_message": {
+      "id": "1300000000000000005",
+      "content": "Cut 2 of **kitchen budget myths** is ready.\n\nref rf-123 v2",
+      "timestamp": "2026-10-13T13:00:00.000000+00:00",
+      "author": { "id": "1000000000000000099", "username": "attention-bot", "bot": true },
+      "attachments": [],
+      "embeds": []
+    }
+  },
+  {
+    "id": "1300000000000000010",
+    "channel_id": "1200000000000000001",
+    "content": "Morning brief, Tue Oct 13",
+    "timestamp": "2026-10-13T12:30:00.000000+00:00",
+    "author": { "id": "1000000000000000099", "username": "attention-bot", "bot": true },
+    "attachments": [],
+    "embeds": []
+  },
+  {
+    "id": "1300000000000000013",
+    "channel_id": "1200000000000000001",
+    "content": "approve everything",
+    "timestamp": "2026-10-13T14:03:00.000000+00:00",
+    "author": { "id": "1100000000000000777", "username": "someone_else" },
+    "attachments": [],
+    "embeds": []
+  }
+]

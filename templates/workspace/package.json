@@ -1,0 +1,11 @@
+{
+  "name": "{{WORKSPACE_SLUG}}",
+  "private": true,
+  "type": "module",
+  "description": "An AttentionOS workspace: Brand Kit, settings and media for one brand.",
+  "scripts": {
+    "doctor": "attentionos doctor",
+    "brief": "attentionos run ops.morning-brief",
+    "approvals": "attentionos approvals"
+  }
+}

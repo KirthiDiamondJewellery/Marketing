@@ -1,0 +1,18 @@
+{
+  "id": "onboarding",
+  "name": "Onboarding",
+  "description": "The Chief of Staff's setup wizard in Studio: reads your website, imports your own posts from your handles, learns your voice from their transcripts and drafts your first Brand Kit for approval.",
+  "agent": "chief_of_staff",
+  "tier": "core",
+  "level": 1,
+  "dependsOn": [],
+  "requiredProviders": [],
+  "optionalProviders": [
+    "scraper",
+    "asr",
+    "ownAnalytics",
+    "publisher"
+  ],
+  "schedules": {},
+  "requiresAcknowledgement": []
+}

@@ -1,0 +1,11 @@
+# Fictional creators for tests.
+creators:
+  - handle: demo_creator_a
+    platform: instagram
+    tier: core
+  - handle: demo_creator_b
+    platform: tiktok
+    tier: core
+  - handle: "@demo_creator_c"
+    platform: instagram
+    tier: adjacent

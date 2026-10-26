@@ -1,0 +1,36 @@
+[
+  {
+    "id": "3400000000000000001",
+    "shortCode": "QfDemoReel01",
+    "url": "https://www.instagram.com/reel/QfDemoReel01/",
+    "caption": "Three permit mistakes that stall a remodel. Comment PERMIT for the checklist.",
+    "timestamp": "2026-10-08T14:00:00.000Z",
+    "ownerUsername": "demo_creator_a",
+    "videoPlayCount": 48210,
+    "videoViewCount": 30111,
+    "likesCount": 2210,
+    "commentsCount": 412,
+    "videoDuration": 41.2,
+    "isPinned": false,
+    "videoUrl": "https://cdn.example.invalid/v/QfDemoReel01.mp4",
+    "displayUrl": "https://cdn.example.invalid/t/QfDemoReel01.jpg",
+    "latestComments": [
+      { "text": "Needed this before my kitchen job", "likesCount": 3 },
+      { "text": "PERMIT", "likesCount": 0 },
+      { "text": "The second one got me last year", "likesCount": 41 }
+    ]
+  },
+  {
+    "id": "3400000000000000002",
+    "shortCode": "QfDemoReel02",
+    "caption": "Pinned intro",
+    "timestamp": "2026-06-01T10:00:00.000Z",
+    "ownerUsername": "demo_creator_a",
+    "videoViewCount": 9000,
+    "likesCount": -1,
+    "commentsCount": "35",
+    "videoDuration": 8,
+    "isPinned": true
+  },
+  { "error": "no_items", "errorDescription": "Profile is private" }
+]

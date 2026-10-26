@@ -1,0 +1,7 @@
+weeklyTarget:
+  shortVideos: 8
+  textPosts: 5
+platforms:
+  instagram:
+    postsPerWeek: 5
+    slots: ["07:30", "12:00", "18:30"]

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Demo Builders Blog</title>
+  <entry>
+    <id>tag:blog.example.org,2026:post-77</id>
+    <title type="html">Heat pumps in cold climates: what changed</title>
+    <link rel="alternate" href="https://blog.example.org/heat-pumps"/>
+    <link rel="replies" href="https://blog.example.org/heat-pumps#comments"/>
+    <published>2026-10-10T08:00:00Z</published>
+    <author><name>Demo Author</name></author>
+    <summary>New models hold efficiency down to -15C.</summary>
+  </entry>
+</feed>

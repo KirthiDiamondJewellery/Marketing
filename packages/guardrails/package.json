@@ -1,0 +1,22 @@
+{
+  "name": "@attentionos/guardrails",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic validators for scripts, captions, keywords, claims, publish payloads and edit preflight. Code holds the gates.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "attentionos-guard": "./bin/attentionos-guard.mjs"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  }
+}

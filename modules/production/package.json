@@ -1,0 +1,25 @@
+{
+  "name": "@attentionos/module-production",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Production module: film list, upload matching, the automatic edit chain, video approvals and scheduling on approval.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./match": "./src/match.ts",
+    "./repo": "./src/repo.ts",
+    "./settings": "./src/settings.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/media": "workspace:*",
+    "@attentionos/module-editing": "workspace:*",
+    "@attentionos/module-publishing": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

@@ -1,0 +1,15 @@
+/* Ambient Signal tells for agent monograms (DESIGN §7.2). Reduced motion stills them via globals.css. */
+@keyframes aos-orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes aos-ping {
+  0% { transform: scale(1); opacity: 0.75; }
+  38% { transform: scale(2.3); opacity: 0; }
+  100% { transform: scale(2.3); opacity: 0; }
+}
+.aos-thinking {
+  animation: aos-orbit 3.2s linear infinite;
+}
+.aos-ping {
+  animation: aos-ping 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}

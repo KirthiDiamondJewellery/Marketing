@@ -1,0 +1,22 @@
+# Your proof inventory: case studies, client wins, FAQs, objections, processes and stories.
+#
+# This is the ONLY place numbers may come from in proof content. If a number isn't here
+# (with a source), agents won't use it. That's how AttentionOS never invents a statistic.
+#
+# kind options: case_study, client_win, faq, objection, process, build, story, stat
+# clientConsent: set to true only if the client agreed to be named. Without it, agents
+# describe the client without naming them.
+#
+# TODO: add 5 to 20 items. The more you add, the less your content repeats itself.
+
+items: []
+#  - id: early-delivery
+#    kind: case_study
+#    title: "Delivered a client project two weeks early"
+#    summary: "One line on the client's situation, what you did differently and the result."
+#    numbers:
+#      - value: "2 weeks"
+#        label: "ahead of the agreed schedule"
+#        source: "project log, March"
+#    clientConsent: false
+#    tags: [delivery, planning]

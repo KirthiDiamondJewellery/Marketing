@@ -1,0 +1,14 @@
+{
+  "overview": { "totalPosts": 1 },
+  "posts": [{
+    "_id": "6a0f1c2d3e4f5a6b7c8d9f10",
+    "content": "Three ways to make a hand-bound notebook last.",
+    "publishedAt": "2026-10-14T12:00:04.000Z",
+    "platforms": [
+      { "platform": "instagram", "accountId": "6a0f1c2d3e4f5a6b7c8d9e01", "platformPostId": "18000000000000042", "platformPostUrl": "https://www.instagram.com/reel/QF0000demo/", "syncStatus": "synced",
+        "analytics": { "impressions": 5400, "reach": 4100, "likes": 320, "comments": 58, "shares": 21, "saves": 44, "views": 9100, "follows": null, "igReelsAvgWatchTime": 6400, "reelsSkipRate": 41.5, "profileViews": 37 } },
+      { "platform": "tiktok", "accountId": "6a0f1c2d3e4f5a6b7c8d9e02", "platformPostId": "7400000000000000001", "syncStatus": "pending", "analytics": { "views": 10 } }
+    ]
+  }],
+  "pagination": { "page": 1, "limit": 50, "total": 1 }
+}

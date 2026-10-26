@@ -1,0 +1,25 @@
+{
+  "name": "@attentionos/module-onboarding",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Onboarding (Chief of Staff): the Studio setup wizard's agents and jobs. Reads your website, imports and transcribes your own posts, learns your voice and drafts your first Brand Kit for approval.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./state": "./src/lib/state.ts",
+    "./brand-files": "./src/lib/brand-files.ts",
+    "./render": "./src/lib/render.ts",
+    "./handles": "./src/lib/handles.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/module-learn": "workspace:*",
+    "@attentionos/module-research": "workspace:*",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  }
+}

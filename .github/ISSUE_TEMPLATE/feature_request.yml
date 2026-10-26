@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest something AttentionOS should do.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to get done, and what gets in the way today?
+      placeholder: I film on Mondays, but the batch-day plan doesn't account for outfit changes between lanes.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: How would you like it to work?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Studio (dashboard)
+        - Research (Analyst)
+        - Strategy (Strategist)
+        - Scripting (Copywriter)
+        - Editing (Art Director)
+        - Publishing (Publisher)
+        - Community (Community)
+        - Ops, chat and approvals (Chief of Staff)
+        - Learning loop
+        - Setup, CLI or doctor
+        - Presets or Brand Kit
+        - Docs
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: who
+    attributes:
+      label: Who it helps
+      description: For example coaches, agencies, local service owners, creators.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've tried

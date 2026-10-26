@@ -1,0 +1,29 @@
+{
+  "name": "attentionos-monorepo",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@12.11.2",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "node scripts/brand-literal-guard.mjs && turbo run lint",
+    "check": "pnpm typecheck && pnpm lint && pnpm test",
+    "attentionos": "tsx apps/cli/src/bin.ts",
+    "db:start": "docker start attentionos-dev-db 2>/dev/null || docker run -d --name attentionos-dev-db -p 127.0.0.1:55433:5432 -e POSTGRES_PASSWORD=postgres -v attentionos-dev-db:/var/lib/postgresql/data pgvector/pgvector:pg17",
+    "plugin:build": "tsx scripts/build-plugin.ts"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "@types/node": "^24.19.2",
+    "tsx": "^4.23.15",
+    "turbo": "^2.11.7",
+    "typescript": "~5.9.3",
+    "vitest": "^5.0.3"
+  }
+}

@@ -1,0 +1,35 @@
+# Call-to-action model for agency founders.
+# CTA type options: comment_keyword, dm_keyword, link_in_bio, follow, save_share, book_call, none
+
+byFunnelStage:
+  tofu:
+    default: follow
+    alternatives: [save_share, comment_keyword]
+    guidance: Ask for the follow by promising the next useful thing ("Follow, I'm testing the other two this week").
+  mofu:
+    default: comment_keyword
+    alternatives: [save_share]
+    guidance: Offer the asset you showed on screen (the template, the workflow, the checklist). The keyword sends it by DM.
+  bofu:
+    default: comment_keyword
+    alternatives: [book_call, dm_keyword]
+    guidance: Offer an audit or a short call, say who it's for and who it's not for. One step only.
+
+keywords:
+  rules:
+    - 4 to 9 letters, letters only.
+    - Never reused, and never a substring of another keyword (and no other keyword inside it).
+    - Not a word that appears in the script, so normal comments don't trigger the DM.
+    - Easy to spell after hearing it once.
+  examples: [AUDIT, BLUEPRINT, STACK]
+
+leadMagnetIdeas:
+  - The template or workflow shown in the video, ready to copy.
+  - A short audit checklist the viewer can run on their own business.
+  - A teardown document of one campaign or funnel.
+  - The questions to ask before hiring an agency.
+  - A pricing calculator or scoping worksheet.
+
+tracking:
+  utmContent: "<keyword>_<post number>"
+  note: Every post's link carries utm_content so leads and signed projects trace back to the post that earned them.

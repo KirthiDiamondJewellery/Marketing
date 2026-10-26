@@ -1,0 +1,17 @@
+# Creators the Analyst watches for outliers: posts that did far better than that creator's usual.
+# AttentionOS studies the structure of what works (hooks, formats, angles), never copies the words.
+#
+# platform: instagram, tiktok, youtube, facebook, linkedin, x, threads
+# tier:
+#   core          direct peers in your niche; checked most often
+#   adjacent      neighbouring niches with the same audience
+#   aspirational  bigger accounts whose formats you want to learn from
+#   remake        creators whose best ideas you may rework in your own voice
+#
+# TODO: add 5 to 15 accounts. Research uses public data only and respects your scraping budget.
+
+creators: []
+#  - handle: "@example_creator"
+#    platform: instagram
+#    tier: core
+#    notes: "Great at short myth-bust videos."

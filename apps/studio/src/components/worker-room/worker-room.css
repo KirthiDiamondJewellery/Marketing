@@ -1,0 +1,1310 @@
+/*
+ * The worker room. Every selector is scoped under .wr and every keyframe is prefixed wr- so nothing leaks into Studio.
+ * Motion is transform and opacity only; small loops are stepped so they repaint a few times a second, not sixty.
+ * Anything the camera cannot see gets .is-off and stops.
+ */
+
+.wr {
+  --wr-bg: #07050a;
+  --wr-magenta: #8139fa;
+  --wr-pink: #b566ff;
+  --wr-violet: #8b5cf6;
+  --wr-amber: #ffb547;
+  --wr-red: #ff5a6e;
+  --wr-ink: #f4eeff;
+  --wr-ink-2: #b9a9d6;
+  --wr-line: rgba(129, 57, 250, 0.28);
+  --wr-ease: cubic-bezier(0.62, 0.02, 0.2, 1);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  container: wr / inline-size;
+  color: var(--wr-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+  outline: none;
+  background:
+    radial-gradient(60% 55% at 50% 44%, rgba(129, 57, 250, 0.16), transparent 70%),
+    radial-gradient(40% 40% at 16% 88%, rgba(139, 92, 246, 0.14), transparent 70%),
+    radial-gradient(40% 40% at 86% 12%, rgba(139, 92, 246, 0.1), transparent 70%),
+    var(--wr-bg);
+}
+
+.wr:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--wr-pink);
+}
+
+.wr .wr-room {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.wr .wr-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  transition-property: transform;
+  transition-timing-function: var(--wr-ease);
+}
+
+.wr .wr-stage svg {
+  display: block;
+  overflow: visible;
+  font-family: var(--font-sans);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.wr .wr-num {
+  font-variant-numeric: tabular-nums;
+}
+
+.wr .is-off,
+.wr .is-off * {
+  animation-play-state: paused !important;
+}
+
+.wr .is-off .scene * {
+  animation: none !important;
+}
+
+.wr .station,
+.wr .wr-chief,
+.wr .wr-pick {
+  cursor: pointer;
+}
+
+/* ---------- Floor lines and pads ---------- */
+
+.wr .wr-link-line {
+  opacity: 0.32;
+  transition: opacity 0.6s;
+}
+
+.wr .wr-link-working .wr-link-line {
+  opacity: 0.9;
+}
+
+.wr .wr-link-waiting .wr-link-line,
+.wr .wr-link-blocked .wr-link-line {
+  opacity: 0.6;
+}
+
+.wr .wr-link-end {
+  opacity: 0.45;
+}
+
+.wr .wr-link-working .wr-link-end {
+  opacity: 1;
+}
+
+.wr .wr-flow {
+  stroke-dasharray: 3 33;
+  opacity: 0.95;
+  animation: wr-flow 1.6s steps(18) infinite;
+}
+
+@keyframes wr-flow {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+.wr .wr-pad-edge {
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+
+.wr .wr-pad-glow {
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.wr .wr-pad-name {
+  opacity: 0.55;
+  transition: opacity 0.5s;
+}
+
+.wr .wr-pad-working .wr-pad-edge,
+.wr .wr-pad-waiting .wr-pad-edge,
+.wr .wr-pad-blocked .wr-pad-edge,
+.wr .wr-pad-working .wr-pad-name,
+.wr .wr-pad-waiting .wr-pad-name,
+.wr .wr-pad-blocked .wr-pad-name {
+  opacity: 1;
+}
+
+.wr .wr-pad-working .wr-pad-glow {
+  opacity: 0.28;
+  animation: wr-pad-glow 2.4s steps(8) infinite alternate;
+}
+
+.wr .wr-pad-waiting .wr-pad-glow,
+.wr .wr-pad-blocked .wr-pad-glow {
+  opacity: 0.2;
+  animation: wr-pad-glow 3.2s steps(8) infinite alternate;
+}
+
+@keyframes wr-pad-glow {
+  to {
+    opacity: 0.08;
+  }
+}
+
+.wr .wr-core-orbit {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wr-spin 40s steps(120) infinite;
+}
+
+/* ---------- Status tags ---------- */
+
+.wr .wr-tag {
+  transition: opacity 0.5s;
+}
+
+.wr .wr-tag-idle,
+.wr .wr-tag-paused {
+  opacity: 0.62;
+}
+
+.wr .wr-tag-working .wr-tag-dot {
+  animation: wr-led 0.9s steps(2, jump-none) infinite;
+}
+
+.wr .wr-tag-waiting .wr-tag-dot,
+.wr .wr-tag-blocked .wr-tag-dot {
+  animation: wr-led 1.8s steps(2, jump-none) infinite;
+}
+
+.wr .wr-tag-idle .wr-tag-dot,
+.wr .wr-tag-paused .wr-tag-dot {
+  fill: #54407a;
+}
+
+/* ---------- Stations ---------- */
+
+.wr .st-pool {
+  fill: url(#wr-glow-floor);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.wr .station.st-work .st-pool {
+  opacity: 0.9;
+}
+
+.wr .station.st-send .st-pool {
+  opacity: 0.5;
+}
+
+.wr .station.st-wait .st-pool,
+.wr .station.st-block .st-pool {
+  fill: url(#wr-glow-floor-amber);
+  opacity: 0.6;
+  animation: wr-breathe 3.2s steps(10) infinite alternate;
+}
+
+.wr .desk-keys {
+  fill: #2a1f45;
+  transition: fill 0.3s;
+}
+
+.wr .station.st-work .desk-keys {
+  fill: var(--tint);
+}
+
+.wr .station.st-wait .desk-keys {
+  fill: #5a3f1a;
+}
+
+.wr .desk-strip {
+  opacity: 0.18;
+  transition: opacity 0.3s;
+}
+
+.wr .station.st-work .desk-strip,
+.wr .station.st-send .desk-strip {
+  opacity: 1;
+}
+
+.wr .station.st-wait .desk-strip,
+.wr .station.st-block .desk-strip {
+  opacity: 0.5;
+  fill: var(--wr-amber);
+}
+
+.wr .scr-frame {
+  stroke-opacity: 0.35;
+  transition: stroke-opacity 0.3s;
+}
+
+.wr .station.st-work .scr-frame,
+.wr .station.st-send .scr-frame {
+  stroke-opacity: 1;
+}
+
+.wr .station.st-wait .scr-frame,
+.wr .station.st-block .scr-frame {
+  stroke: var(--wr-amber);
+  stroke-opacity: 0.85;
+}
+
+.wr .station.st-block .scr-frame {
+  stroke: var(--wr-red);
+}
+
+.wr .scr-tab {
+  stroke-opacity: 0.5;
+}
+
+.wr .station.st-work .scr-tab {
+  stroke-opacity: 1;
+}
+
+.wr .scr-name {
+  opacity: 0.6;
+}
+
+.wr .station.st-work .scr-name,
+.wr .station.st-send .scr-name,
+.wr .station.st-wait .scr-name {
+  opacity: 1;
+}
+
+/* Powered down: the screen rests dark on its last picture with a standby dot. */
+.wr .scr-dim {
+  opacity: 0.74;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.wr .station.st-work .scr-dim {
+  opacity: 0;
+}
+
+.wr .station.st-send .scr-dim {
+  opacity: 0.12;
+}
+
+.wr .station.st-wait .scr-dim,
+.wr .station.st-block .scr-dim {
+  opacity: 0.45;
+}
+
+.wr .scr-standby {
+  fill: #54407a;
+  opacity: 0.9;
+  animation: wr-breathe 4s steps(10) infinite alternate;
+  animation-delay: var(--breath, 0s);
+}
+
+.wr .station.st-work .scr-standby,
+.wr .station.st-send .scr-standby,
+.wr .station.st-wait .scr-standby,
+.wr .station.st-block .scr-standby {
+  display: none;
+}
+
+/* Desk screens only play their story while the agent works. */
+.wr .station:not(.st-work):not(.st-send) .scene * {
+  animation: none !important;
+}
+
+.wr .scr-led {
+  fill: #3e2f5c;
+}
+
+.wr .station.st-work .scr-led {
+  fill: var(--wr-pink);
+  animation: wr-led 0.8s steps(2, jump-none) infinite;
+}
+
+.wr .station.st-wait .scr-led {
+  fill: var(--wr-amber);
+  animation: wr-led 1.8s steps(2, jump-none) infinite;
+}
+
+.wr .scr-need {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wr-pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) both, wr-need 1.8s 0.45s steps(6) infinite alternate;
+}
+
+@keyframes wr-need {
+  to {
+    opacity: 0.55;
+  }
+}
+
+@keyframes wr-led {
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes wr-pop {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes wr-breathe {
+  to {
+    opacity: 0.35;
+  }
+}
+
+/* ---------- Chief ---------- */
+
+.wr .wr-console-glow {
+  fill: var(--wr-pink);
+  opacity: 0.55;
+  animation: wr-led 2.2s steps(2, jump-none) infinite;
+}
+
+.wr .wr-chief.st-work .wr-console-glow,
+.wr .wr-chief.st-send .wr-console-glow {
+  opacity: 0.9;
+  animation-duration: 1.1s;
+}
+
+.wr .wr-chief.st-wait .wr-console-glow {
+  fill: var(--wr-amber);
+}
+
+.wr .wr-chief-pool {
+  opacity: 0.6;
+}
+
+.wr .wr-chief.st-work .wr-chief-pool,
+.wr .wr-chief.st-send .wr-chief-pool {
+  opacity: 1;
+}
+
+.wr .wr-chief-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wr-spin 12s steps(60) infinite;
+}
+
+.wr .wr-chief.st-work .wr-chief-spin {
+  animation-duration: 6s;
+}
+
+@keyframes wr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wr .wr-chief-logo {
+  animation: wr-bob 3.2s steps(8) infinite alternate;
+}
+
+@keyframes wr-bob {
+  to {
+    transform: translateY(-4px);
+  }
+}
+
+.wr .wr-ticket {
+  animation: wr-ticket 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+
+@keyframes wr-ticket {
+  from {
+    transform: translateY(14px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ---------- Brand Brain ---------- */
+
+.wr .wr-core-beam {
+  opacity: 0.4;
+  transition: opacity 0.8s;
+}
+
+.wr .wr-core.is-busy .wr-core-beam {
+  opacity: 0.7;
+}
+
+.wr .wr-core-halo {
+  opacity: 0.7;
+  animation: wr-core-halo 3.4s steps(8) infinite alternate;
+}
+
+.wr .wr-core.is-busy .wr-core-halo {
+  opacity: 1;
+  animation-duration: 1.8s;
+}
+
+@keyframes wr-core-halo {
+  to {
+    opacity: 0.45;
+  }
+}
+
+.wr .wr-core-ring {
+  animation: wr-core-ring 2.8s steps(7) infinite alternate;
+}
+
+@keyframes wr-core-ring {
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+.wr .wr-core-spin {
+  animation: wr-core-spin 3.4s steps(13) infinite;
+}
+
+.wr .wr-core.is-busy .wr-core-spin {
+  animation-duration: 1.6s;
+}
+
+@keyframes wr-core-spin {
+  to {
+    stroke-dashoffset: -39;
+  }
+}
+
+.wr .wr-holo-brain {
+  animation: wr-holo-float 3.4s steps(16) infinite alternate, wr-holo-flicker 5.2s steps(1) infinite;
+}
+
+@keyframes wr-holo-float {
+  to {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes wr-holo-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  47% {
+    opacity: 0.78;
+  }
+  49% {
+    opacity: 1;
+  }
+  83% {
+    opacity: 0.86;
+  }
+  85% {
+    opacity: 1;
+  }
+}
+
+.wr .wr-holo-scan {
+  animation: wr-holo-scan 2.4s steps(24) infinite;
+}
+
+@keyframes wr-holo-scan {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+.wr .wr-core.is-off .wr-holo-brain,
+.wr .wr-core.is-off .wr-holo-scan {
+  animation: none;
+}
+
+/* Knowledge cards only rise into the brain while someone is reading from it. */
+.wr .wr-core-card {
+  opacity: 0;
+}
+
+.wr .wr-core.is-busy .wr-core-card {
+  animation: wr-core-card 3.3s steps(22) infinite;
+}
+
+@keyframes wr-core-card {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-88px);
+    opacity: 0;
+  }
+}
+
+/* ---------- Feed wall ---------- */
+
+.wr .wr-feed-progress {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: wr-feed-progress 7s steps(28) infinite;
+}
+
+@keyframes wr-feed-progress {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.wr .wr-feed-swipe {
+  animation: wr-feed-swipe 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes wr-feed-swipe {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+.wr .wr-feed-scan {
+  opacity: 0;
+  animation: wr-feed-scan 7.8s linear infinite;
+}
+
+@keyframes wr-feed-scan {
+  0% {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+  14% {
+    transform: translateY(136px);
+    opacity: 0.85;
+  }
+  15%,
+  100% {
+    transform: translateY(136px);
+    opacity: 0;
+  }
+}
+
+.wr .wr-feed-flash {
+  animation: wr-fade-out 0.9s ease-out both;
+}
+
+.wr .wr-feed-white {
+  animation: wr-feed-white 0.5s ease-out both;
+}
+
+@keyframes wr-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes wr-feed-white {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.wr .wr-rack-led {
+  animation: wr-led 1.6s steps(2, jump-none) infinite;
+}
+
+/* ---------- Robots ---------- */
+
+.wr .bot-lean,
+.wr .bot-head,
+.wr .bot-face,
+.wr .bot-arm {
+  transition: transform 0.3s cubic-bezier(0.3, 0.9, 0.4, 1);
+}
+
+.wr .bot-eye {
+  fill: #5d4d86;
+}
+
+.wr .bot-ear {
+  fill: #54449a;
+}
+
+.wr .bot-orb {
+  fill: #3e2f5c;
+}
+
+.wr .bot-chest {
+  fill: #2e2252;
+}
+
+.wr .bot-halo {
+  fill: url(#wr-glow-pink);
+  opacity: 0;
+}
+
+.wr .bot-smile {
+  opacity: 0;
+  stroke: #fff;
+}
+
+.wr .bot-crown {
+  animation: wr-crown 2.4s steps(6) infinite alternate;
+}
+
+@keyframes wr-crown {
+  to {
+    transform: translateY(-1.6px);
+  }
+}
+
+/* Idle: powered down, a slow breath on the chest light, head dipped a touch. */
+.wr .bot.st-idle .bot-chest {
+  animation: wr-bot-breathe 4.2s steps(12) infinite alternate;
+  animation-delay: var(--breath, 0s);
+}
+
+.wr .bot.st-idle .bot-head {
+  transform: translateY(0.9px);
+}
+
+.wr .bot.st-idle:not(.is-chief) .bot-torso {
+  opacity: 0.82;
+}
+
+@keyframes wr-bot-breathe {
+  from {
+    fill: #2e2252;
+  }
+  to {
+    fill: #5a3f9a;
+  }
+}
+
+/* Working: eyes and antenna lit, hands tapping, a blink and a nod. */
+.wr .bot.st-work .bot-eye {
+  fill: #c08bff;
+}
+
+.wr .bot.st-work .bot-ear,
+.wr .bot.st-work .bot-orb {
+  fill: var(--wr-pink);
+}
+
+.wr .bot.st-work .bot-chest {
+  fill: var(--tint);
+}
+
+.wr .bot.st-work .bot-halo {
+  opacity: 0.8;
+  animation: wr-halo 1.2s steps(4) infinite alternate;
+}
+
+@keyframes wr-halo {
+  to {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+
+.wr .bot.st-work .bot-hand.l {
+  animation: wr-tap 0.4s steps(2, jump-none) infinite;
+}
+
+.wr .bot.st-work .bot-hand.r {
+  animation: wr-tap 0.4s steps(2, jump-none) -0.2s infinite;
+}
+
+@keyframes wr-tap {
+  to {
+    transform: translateY(-2.8px);
+  }
+}
+
+.wr .bot.st-work .bot-eyes {
+  transform-origin: 0 -32.8px;
+  animation: wr-blink 3.4s steps(1) infinite;
+}
+
+@keyframes wr-blink {
+  0%,
+  44%,
+  50%,
+  100% {
+    transform: scaleY(1);
+  }
+  46% {
+    transform: scaleY(0.12);
+  }
+}
+
+.wr .bot.st-work .bot-head {
+  animation: wr-nod 1.6s steps(2, jump-none) infinite;
+}
+
+@keyframes wr-nod {
+  to {
+    transform: translateY(0.7px);
+  }
+}
+
+/* Waiting on you: amber eyes and antenna, looking up and out at the viewer. */
+.wr .bot.st-wait .bot-eye,
+.wr .bot.st-wait .bot-orb,
+.wr .bot.st-wait .bot-ear,
+.wr .bot.st-wait .bot-chest {
+  fill: var(--wr-amber);
+}
+
+.wr .bot.st-block .bot-eye,
+.wr .bot.st-block .bot-orb,
+.wr .bot.st-block .bot-chest {
+  fill: var(--wr-red);
+}
+
+.wr .bot.st-wait .bot-halo,
+.wr .bot.st-block .bot-halo {
+  fill: url(#wr-glow-amber);
+  opacity: 0.7;
+  animation: wr-halo 1.8s steps(4) infinite alternate;
+}
+
+.wr .bot.st-wait .bot-head,
+.wr .bot.st-block .bot-head {
+  transform: translateY(-1.2px);
+}
+
+.wr .bot.st-wait .bot-arm.r {
+  transform: rotate(-150deg);
+  animation: wr-wave 1.8s steps(3) infinite alternate;
+}
+
+@keyframes wr-wave {
+  from {
+    transform: rotate(-150deg);
+  }
+  to {
+    transform: rotate(-128deg);
+  }
+}
+
+/* Handing off: lean, turn the head, raise the near arm, smile, flash white. */
+.wr .bot.st-send .bot-eye {
+  opacity: 0;
+}
+
+.wr .bot.st-send .bot-smile {
+  opacity: 1;
+}
+
+.wr .bot.st-send .bot-orb,
+.wr .bot.st-send .bot-chest,
+.wr .bot.st-send .bot-ear {
+  fill: #fff;
+}
+
+.wr .bot.st-send .bot-halo {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.wr .bot.st-send.dir-r .bot-lean {
+  transform: rotate(7deg);
+}
+
+.wr .bot.st-send.dir-l .bot-lean {
+  transform: rotate(-7deg);
+}
+
+.wr .bot.st-send.dir-r .bot-head {
+  transform: translate(1.4px, -0.5px);
+}
+
+.wr .bot.st-send.dir-l .bot-head {
+  transform: translate(-1.4px, -0.5px);
+}
+
+.wr .bot.st-send.dir-r .bot-face {
+  transform: translateX(2.6px);
+}
+
+.wr .bot.st-send.dir-l .bot-face {
+  transform: translateX(-2.6px);
+}
+
+.wr .bot-arm.r {
+  transform-origin: 8px -16px;
+}
+
+.wr .bot-arm.l {
+  transform-origin: -8px -16px;
+}
+
+.wr .bot.st-send.dir-r .bot-arm.r {
+  transform: rotate(-120deg);
+}
+
+.wr .bot.st-send.dir-l .bot-arm.l {
+  transform: rotate(120deg);
+}
+
+.wr .bot.st-send.dir-0 .bot-arm.r {
+  transform: rotate(-150deg);
+}
+
+.wr .bot.st-send.dir-0 .bot-arm.l {
+  transform: rotate(150deg);
+}
+
+/* ---------- Desk screen stories ---------- */
+
+.wr .scene {
+  --w: 3.6s;
+}
+
+.wr .scene .i-pop,
+.wr .scene .i-grow,
+.wr .scene .i-rise,
+.wr .scene .i-fade,
+.wr .scene .i-move,
+.wr .scene .i-out,
+.wr .scene .i-shift,
+.wr .scene .i-emph,
+.wr .scene .i-blip {
+  animation-delay: calc(var(--d, 0) * var(--w));
+  animation-fill-mode: both;
+}
+
+.wr .i-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wr-i-pop 0.36s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+@keyframes wr-i-pop {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.wr .i-grow {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: wr-i-grow calc(var(--l, 0.1) * var(--w)) linear;
+}
+
+@keyframes wr-i-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.wr .i-rise {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: wr-i-rise calc(var(--l, 0.12) * var(--w)) cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes wr-i-rise {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+.wr .i-fade {
+  animation: wr-i-fade 0.3s ease-out;
+}
+
+@keyframes wr-i-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.wr .i-move {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wr-i-move calc(var(--l, 0.3) * var(--w)) cubic-bezier(0.3, 0.1, 0.3, 1);
+}
+
+@keyframes wr-i-move {
+  from {
+    transform: translate(var(--fx, 0), var(--fy, 0)) scale(var(--fs, 1));
+    opacity: var(--fo, 1);
+  }
+}
+
+.wr .i-out {
+  animation: wr-i-out 0.3s ease-in;
+}
+
+@keyframes wr-i-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.wr .i-shift {
+  animation: wr-i-shift 0.3s cubic-bezier(0.3, 0.1, 0.3, 1);
+}
+
+@keyframes wr-i-shift {
+  to {
+    transform: translateX(var(--tx, 0));
+  }
+}
+
+.wr .i-emph {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wr-i-emph 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+@keyframes wr-i-emph {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.wr .i-blip {
+  opacity: 0;
+  animation: wr-i-blip calc(var(--l, 0.2) * var(--w)) linear;
+}
+
+@keyframes wr-i-blip {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+}
+
+.wr .loop-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wr-loop-wave 0.9s steps(3, jump-none) infinite alternate;
+  animation-play-state: paused;
+}
+
+@keyframes wr-loop-wave {
+  from {
+    transform: scaleY(0.4);
+  }
+}
+
+.wr .loop-blink {
+  animation: wr-loop-blink 0.7s steps(2, jump-none) infinite;
+  animation-play-state: paused;
+}
+
+@keyframes wr-loop-blink {
+  to {
+    opacity: 0;
+  }
+}
+
+.wr .station.st-work .loop-wave,
+.wr .station.st-work .loop-blink {
+  animation-play-state: running;
+}
+
+/* ---------- Bars ---------- */
+
+.wr .wr-topbar,
+.wr .wr-tourbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  pointer-events: none;
+}
+
+.wr .wr-topbar {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(7, 5, 10, 0.86), rgba(7, 5, 10, 0));
+}
+
+.wr .wr-tourbar {
+  bottom: 0;
+  align-items: flex-end;
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgba(7, 5, 10, 0.9), rgba(7, 5, 10, 0));
+}
+
+.wr .wr-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.wr .wr-brand span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wr .wr-brand svg {
+  flex: none;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.7);
+}
+
+.wr .wr-top-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.wr .wr-live {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px 6px 10px;
+  border: 1px solid var(--wr-line);
+  border-radius: 999px;
+  background: rgba(18, 10, 32, 0.72);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--wr-ink-2);
+  white-space: nowrap;
+}
+
+.wr .wr-live b {
+  min-width: 2ch;
+  text-align: right;
+  font-weight: 600;
+  color: var(--wr-ink);
+}
+
+.wr .wr-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #54407a;
+}
+
+.wr .wr-live-dot.is-on {
+  background: var(--wr-pink);
+  box-shadow: 0 0 10px var(--wr-magenta);
+  animation: wr-led 1.4s steps(2, jump-none) infinite;
+}
+
+.wr .wr-caption {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(7, 5, 10, 0.95);
+  animation: wr-caption-in 0.5s var(--wr-ease) both;
+}
+
+@keyframes wr-caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.wr .wr-stops {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  pointer-events: auto;
+}
+
+.wr .wr-stop,
+.wr .wr-hold {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--wr-ink-2);
+  font: 500 12px/1 var(--font-sans);
+  padding: 8px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 0.2s,
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.wr .wr-stop i {
+  display: none;
+}
+
+.wr .wr-stop.is-live span::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  vertical-align: 2px;
+  border-radius: 50%;
+  background: var(--wr-pink);
+  box-shadow: 0 0 6px var(--wr-magenta);
+}
+
+.wr .wr-stop:hover,
+.wr .wr-hold:hover {
+  color: var(--wr-ink);
+}
+
+.wr .wr-stop.is-on {
+  color: #fff;
+  border-color: var(--wr-line);
+  background: rgba(129, 57, 250, 0.2);
+}
+
+.wr .wr-hold {
+  margin-left: 8px;
+  border-color: var(--wr-line);
+  background: rgba(18, 10, 32, 0.72);
+  color: var(--wr-ink);
+}
+
+.wr .wr-top-right .wr-hold {
+  margin-left: 0;
+}
+
+.wr .wr-hold.is-on {
+  background: var(--wr-magenta);
+  border-color: var(--wr-magenta);
+  color: #fff;
+}
+
+.wr .wr-hold:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.wr .wr-stop:focus-visible,
+.wr .wr-hold:focus-visible {
+  outline: 2px solid var(--wr-pink);
+  outline-offset: 2px;
+}
+
+/* Inside the Studio page the floating chat button sits on the bottom right corner: keep the bar above it. */
+.wr.is-framed .wr-tourbar {
+  padding-bottom: 72px;
+}
+
+/* Narrow or portrait: caption on its own line, jump buttons become dots. */
+@container wr (max-width: 900px) {
+  .wr .wr-tourbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 10px 12px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .wr .wr-caption {
+    font-size: 16px;
+    text-align: center;
+    max-width: none;
+  }
+
+  .wr .wr-stops {
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .wr .wr-stop {
+    padding: 14px 6px;
+    border: 0;
+    background: transparent;
+  }
+
+  .wr .wr-stop.is-on {
+    background: transparent;
+  }
+
+  .wr .wr-stop span {
+    display: none;
+  }
+
+  .wr .wr-stop i {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(185, 169, 214, 0.42);
+    transition:
+      width 0.25s var(--wr-ease),
+      background-color 0.25s;
+  }
+
+  .wr .wr-stop.is-live i {
+    background: rgba(181, 102, 255, 0.75);
+  }
+
+  .wr .wr-stop.is-on i {
+    width: 16px;
+    background: var(--wr-pink);
+    box-shadow: 0 0 10px var(--wr-magenta);
+  }
+
+  .wr .wr-hold {
+    margin-left: 8px;
+    padding: 9px 11px;
+  }
+
+  .wr .wr-topbar {
+    padding: 10px 12px;
+  }
+
+  .wr .wr-brand {
+    font-size: 14px;
+  }
+
+  .wr .wr-live {
+    font-size: 11px;
+    padding: 5px 10px 5px 8px;
+  }
+
+  .wr .wr-live-of {
+    display: none;
+  }
+}
+
+@container wr (max-width: 480px) {
+  .wr .wr-full {
+    display: none;
+  }
+}
+
+/* Reduced motion (and no reel mode): a still room. */
+.wr.is-still *,
+.wr.is-still *::before,
+.wr.is-still *::after {
+  animation: none !important;
+  transition: none !important;
+}

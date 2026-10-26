@@ -1,0 +1,17 @@
+{
+  "id": "publishing",
+  "name": "Publishing",
+  "description": "The Publisher: plans each week's posts from your cadence, checks every payload before any API call, schedules with idempotency keys so nothing posts twice, hands Instagram main-feed posts to you to post (assist) by default, cross-posts reels to other platforms and adds a tracked link to every post. Instagram trial reels are posted for the trial-reels module (trial only, never the main grid).",
+  "agent": "publisher",
+  "tier": "default",
+  "level": 3,
+  "dependsOn": [],
+  "requiredProviders": ["publisher"],
+  "optionalProviders": ["notifier"],
+  "schedules": {
+    "publishing.publish-due": "*/10 * * * *",
+    "publishing.sync-accounts": "15 6 * * *",
+    "publishing.schedule-week": "0 17 * * 0"
+  },
+  "requiresAcknowledgement": []
+}

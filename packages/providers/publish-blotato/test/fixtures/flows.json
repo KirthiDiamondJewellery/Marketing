@@ -1,0 +1,4 @@
+{ "items": [
+  { "id": "flow_qf_1", "accountId": "90001", "isActive": true, "triggers": [ { "type": "comment-received", "keywords": ["stitch", "Stitch", "STITCH"], "postId": "771001" } ] },
+  { "id": "flow_other", "accountId": "90009", "isActive": false, "triggers": [ { "type": "comment-received", "keywords": ["x"], "postId": null } ] }
+] }

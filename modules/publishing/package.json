@@ -1,0 +1,21 @@
+{
+  "name": "@attentionos/module-publishing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Publisher agent: week plans, payload checks, idempotent scheduling, Instagram assist, cross-posting, tracked links and opt-in trial reels.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./trial-proof": "./src/lib/trial-flow.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/guardrails": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

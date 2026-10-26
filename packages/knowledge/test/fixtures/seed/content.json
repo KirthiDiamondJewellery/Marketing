@@ -1,0 +1,21 @@
+[
+  {
+    "id": "c0000000-0000-4000-8000-000000000001",
+    "title": "Three mistakes new clients make",
+    "status": "published",
+    "kind": "reel",
+    "funnel_stage": "tofu",
+    "created_at": "2026-09-25T12:00:00.000Z",
+    "updated_at": "2026-09-30T13:00:00.000Z",
+    "published_at": "2026-09-30T23:30:00.000Z"
+  },
+  {
+    "id": "c0000000-0000-4000-8000-000000000002",
+    "title": "What a first session covers",
+    "status": "scripted",
+    "kind": "reel",
+    "funnel_stage": "mofu",
+    "created_at": "2026-10-08T12:00:00.000Z",
+    "updated_at": "2026-10-08T12:00:00.000Z"
+  }
+]

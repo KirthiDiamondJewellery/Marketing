@@ -1,0 +1,3 @@
+post_id,views,link_clicks,impressions,retention,retention_step_s,skip_rate
+A1,1000,12,1400,100|78|61|50|44,1.5,38%
+A2,900,,,,,

@@ -1,0 +1,23 @@
+{
+  "name": "@attentionos/module-learn",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Learn (Analyst): metric snapshots, own baseline, feature attribution, weights, post-mortems, weekly briefing and cost watch.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./analytics": "./src/analytics/index.ts",
+    "./followers": "./src/followers.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/scoring": "workspace:*",
+    "@attentionos/module-research": "workspace:*",
+    "postgres": "^3.4.9",
+    "zod": "^4.6.5"
+  }
+}

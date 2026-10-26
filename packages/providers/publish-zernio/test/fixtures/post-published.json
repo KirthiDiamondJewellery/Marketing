@@ -1,0 +1,16 @@
+{
+  "post": {
+    "_id": "6a0f1c2d3e4f5a6b7c8d9f10",
+    "status": "published",
+    "scheduledFor": "2026-10-14T12:00:00.000Z",
+    "publishedAt": "2026-10-14T12:00:04.000Z",
+    "platforms": [{
+      "platform": "instagram",
+      "accountId": { "_id": "6a0f1c2d3e4f5a6b7c8d9e01", "username": "examplebrand.studio" },
+      "status": "published",
+      "platformPostId": "18000000000000042",
+      "platformPostUrl": "https://www.instagram.com/reel/QF0000demo/",
+      "publishedAt": "2026-10-14T12:00:04.000Z"
+    }]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@attentionos/module-trial-reels",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Trial reels: turns clean reels into a day of Instagram trial-reel variations (speed, colour, captions, title, hashtags), renders and verifies them, and schedules them as trial reels only after the owner's OK.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./plan": "./src/plan.ts",
+    "./repo": "./src/repo.ts",
+    "./settings": "./src/settings.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "@attentionos/db": "workspace:*",
+    "@attentionos/media": "workspace:*",
+    "@attentionos/module-editing": "workspace:*",
+    "@attentionos/module-publishing": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

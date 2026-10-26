@@ -1,0 +1,18 @@
+{
+  "id": "community",
+  "name": "Community",
+  "description": "The Community agent: turns a comment keyword into a DM with a tracked lead-magnet link, triages your DMs (rules first, then AI) into Hot, Warm and Cold with draft replies, drafts comment replies from a rotating bank and hands leads to your CRM. Nothing is sent without your approval unless you choose autopilot.",
+  "agent": "community",
+  "tier": "default",
+  "level": 3,
+  "dependsOn": ["publishing"],
+  "requiredProviders": ["inbox"],
+  "optionalProviders": ["crm", "notifier"],
+  "schedules": {
+    "community.activate-automations": "*/15 * * * *",
+    "community.dm-triage": "0 8-20/2 * * *",
+    "community.comment-replies": "30 9-21/3 * * *",
+    "community.send-approved": "*/10 * * * *"
+  },
+  "requiresAcknowledgement": ["automatedDmRisk"]
+}

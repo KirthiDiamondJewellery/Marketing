@@ -1,0 +1,22 @@
+{
+  "name": "@attentionos/module-ops",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ops (Chief of Staff): morning brief, approvals queue, Telegram/Discord chat routing, quiet hours, alert dedupe, outbox and demo mode.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "postgres": "^3.4.9",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@attentionos/db": "workspace:*"
+  }
+}

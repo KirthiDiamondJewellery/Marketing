@@ -1,0 +1,44 @@
+name: Release checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  dependencies:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm audit --audit-level=moderate
+      - uses: astral-sh/setup-uv@v6
+      - name: Audit locked Python runtime dependencies and optional features
+        working-directory: media-py
+        run: |
+          uv export --frozen --all-extras --no-dev --no-emit-project --format requirements-txt --output-file "$RUNNER_TEMP/media-requirements.txt"
+          uvx pip-audit --no-deps --disable-pip -r "$RUNNER_TEMP/media-requirements.txt"
+
+  container:
+    name: Release container build
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build CLI, Studio and runtime from a clean checkout
+        run: docker build --pull -f deploy/Dockerfile -t attentionos:ci .
+      - name: Smoke test the packaged CLI
+        run: docker run --rm --entrypoint attentionos attentionos:ci --version

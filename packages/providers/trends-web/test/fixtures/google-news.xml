@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>"home renovation" when:2d - Google News</title>
+    <item>
+      <title>Renovation spending forecast holds steady - Demo Business Daily</title>
+      <link>https://news.google.com/rss/articles/CBMiDemoArticleOne?oc=5</link>
+      <guid isPermaLink="false">CBMiDemoArticleOne</guid>
+      <pubDate>Sat, 10 Oct 2026 11:00:00 GMT</pubDate>
+      <description>&lt;a href="https://news.google.com/rss/articles/CBMiDemoArticleOne"&gt;Renovation spending forecast holds steady&lt;/a&gt;</description>
+      <source url="https://daily.example.com">Demo Business Daily</source>
+    </item>
+  </channel>
+</rss>

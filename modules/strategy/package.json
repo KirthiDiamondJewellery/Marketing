@@ -1,0 +1,13 @@
+{
+  "name": "@attentionos/module-strategy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Strategy (Strategist): lanes, funnel mix, angle bank, proof pickers and the daily Film today brief.",
+  "license": "MIT",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": { "@attentionos/core": "workspace:*", "@attentionos/scoring": "workspace:*", "@attentionos/module-research": "workspace:*", "@attentionos/module-learn": "workspace:*", "postgres": "^3.4.9", "yaml": "^2.9.1", "zod": "^4.6.5" }
+}

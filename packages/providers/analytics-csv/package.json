@@ -1,0 +1,13 @@
+{
+  "name": "@attentionos/provider-analytics-csv",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Own-account analytics from CSV exports (for metrics no API exposes, such as Instagram skip rate).",
+  "license": "MIT",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": { "@attentionos/core": "workspace:*", "zod": "^4.6.5" }
+}

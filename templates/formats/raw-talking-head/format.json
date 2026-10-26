@@ -1,0 +1,98 @@
+{
+  "$schema": "../format.schema.json",
+  "id": "raw-talking-head",
+  "version": 1,
+  "name": "Raw talking head",
+  "summary": "One take to camera, cut tight, captions and a frame-1 header. Looks unproduced on purpose.",
+  "bestFor": [
+    "A strong opinion, a myth to bust or an answer to a customer question",
+    "Days with no screen recording or B-roll",
+    "The fastest format to film: one location, one take"
+  ],
+  "needs": ["One vertical take to camera, 20 to 90 seconds of usable speech"],
+  "layout": {
+    "default": "full",
+    "modes": [{ "mode": "full", "use": "The whole video. Face-aware framing keeps the eyes about 40% from the top." }]
+  },
+  "captions": {
+    "style": "clean",
+    "position": "lower",
+    "safeZone": "universal",
+    "maxWords": 3,
+    "emphasisPerLine": [0, 1]
+  },
+  "overlaySlots": [
+    {
+      "kind": "headline",
+      "when": "Frame 1 to about 3 s: the hook as a header, so frame 1 works as the thumbnail.",
+      "max": 1,
+      "evidenceRequired": false
+    },
+    {
+      "kind": "lower-third",
+      "when": "Optional, once, after the hook: who is talking and why they know.",
+      "max": 1,
+      "evidenceRequired": false
+    }
+  ],
+  "pacing": {
+    "targetLengthS": [20, 60],
+    "hookBy": 3,
+    "maxPauseS": 0.15,
+    "p90PauseS": 0.1,
+    "cut": {
+      "strictDb": -42,
+      "broadDb": -35,
+      "wordPadS": 0.05,
+      "hookProtectS": 0.6,
+      "minKeepS": 0.2,
+      "retakes": true,
+      "editNotes": true,
+      "restarts": true,
+      "fillers": true,
+      "fillerIslands": true,
+      "sentencePauseS": 0.1
+    },
+    "notes": [
+      "First spoken word within 0.3 s of frame 1.",
+      "Cut only flubs, retakes and dead air. Keep every finished sentence whole.",
+      "Drop a weak point rather than pad the length."
+    ]
+  },
+  "audio": {
+    "sfx": "none",
+    "music": "none",
+    "notes": ["No baked-in music: the user adds a trending sound in the app."]
+  },
+  "camera": { "punchIns": true, "push": false },
+  "motion": { "jumpCutZoom": 0.07, "punchIns": "off", "hookPush": false },
+  "look": { "color": "auto", "grade": "none", "sharpen": "auto" },
+  "broll": { "stills": 0, "loops": 0, "notes": [] },
+  "evidence": [
+    {
+      "choice": "A header on frame 1",
+      "why": "Most skips happen in the first 3 seconds, and frame 1 is also the thumbnail. A visible claim gives a reason to stay.",
+      "strength": "strong"
+    },
+    {
+      "choice": "No pause over 0.15 s",
+      "why": "Viewers hear pauses as dead air; tight cuts measurably keep people watching in short-form tests.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Subtle punch-ins only at jump cuts",
+      "why": "A 6 to 10% zoom change hides the jump without looking produced.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "No music bed",
+      "why": "A trending sound added in the app reaches more people and avoids licensing problems.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Fillers, restarts and stutters cut; a breath kept at full stops",
+      "why": "Dead air and false starts read as hesitation; a tiny pause after a full stop keeps the delivery human instead of breathless.",
+      "strength": "moderate"
+    }
+  ]
+}

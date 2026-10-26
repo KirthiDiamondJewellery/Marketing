@@ -1,0 +1,105 @@
+{
+  "$schema": "../format.schema.json",
+  "id": "split-demo",
+  "version": 1,
+  "name": "Split-screen demo",
+  "summary": "Screen recording on top, you on the bottom, captions on the seam. For showing a tool, a process or a result.",
+  "bestFor": [
+    "Walking through a tool, a dashboard or a before/after",
+    "Proof content: show the real screen while you explain it",
+    "Anything where the viewer needs to see what you are talking about"
+  ],
+  "needs": ["One vertical take to camera", "One or more screen recordings (or screenshots) of what you talk about"],
+  "layout": {
+    "default": "split",
+    "modes": [
+      { "mode": "full", "use": "The hook (first 2 to 3 s) and the call to action: face only." },
+      { "mode": "split", "use": "Most of the video: the visual on top, you underneath." },
+      { "mode": "fullVisual", "use": "Every 10 to 15 s for 2 to 4 s when a detail on screen needs the whole frame." }
+    ],
+    "fullVisualShare": { "max": 0.34 },
+    "splitRatio": 0.5,
+    "visualChangeEveryS": [3, 6]
+  },
+  "captions": {
+    "style": "clean",
+    "position": "seam",
+    "safeZone": "universal",
+    "maxWords": 3,
+    "emphasisPerLine": [0, 2]
+  },
+  "overlaySlots": [
+    { "kind": "headline", "when": "The hook, frame 1 to about 2.5 s.", "max": 1, "evidenceRequired": false },
+    {
+      "kind": "screenshot",
+      "when": "When a line cites a page, a result or a source: show it with a source chip.",
+      "max": 4,
+      "evidenceRequired": true
+    },
+    {
+      "kind": "chart",
+      "when": "When a line states a number that changed (before/after).",
+      "max": 2,
+      "evidenceRequired": true
+    },
+    { "kind": "lower-third", "when": "Optional, once: who you are.", "max": 1, "evidenceRequired": false }
+  ],
+  "pacing": {
+    "targetLengthS": [25, 60],
+    "hookBy": 3,
+    "maxPauseS": 0.15,
+    "p90PauseS": 0.1,
+    "cut": {
+      "strictDb": -42,
+      "broadDb": -35,
+      "wordPadS": 0.05,
+      "hookProtectS": 0.6,
+      "minKeepS": 0.2,
+      "retakes": true,
+      "editNotes": true,
+      "restarts": true,
+      "fillers": true,
+      "fillerIslands": true,
+      "sentencePauseS": 0.1
+    },
+    "notes": [
+      "Change the top visual every 3 to 6 s so the screen never sits still.",
+      "Line the visual change up with the sentence that mentions it."
+    ]
+  },
+  "audio": {
+    "sfx": "sparse",
+    "music": "optional",
+    "notes": ["A soft whoosh on layout changes only; never on a cut inside a sentence."]
+  },
+  "camera": { "punchIns": true, "push": false },
+  "motion": { "jumpCutZoom": 0.07, "punchIns": "emphasis", "hookPush": false },
+  "look": { "color": "auto", "grade": "none", "sharpen": "auto" },
+  "broll": {
+    "stills": 6,
+    "loops": 4,
+    "notes": ["Screen recordings come first; stills only for sources and results."]
+  },
+  "evidence": [
+    {
+      "choice": "Show the screen while you talk",
+      "why": "Seeing the real tool or result is proof; it beats describing it and keeps attention on the claim.",
+      "strength": "strong"
+    },
+    {
+      "choice": "Visual changes every 3 to 6 s",
+      "why": "A static top half reads as a screenshot and gets skipped; regular changes hold attention.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Captions on the seam",
+      "why": "Between the two halves they cover neither your face nor the screen detail.",
+      "strength": "moderate"
+    },
+    {
+      "choice": "Every number on screen backed by evidence",
+      "why": "A number the viewer can check builds trust; an unbacked one costs it.",
+      "strength": "strong"
+    }
+  ]
+}

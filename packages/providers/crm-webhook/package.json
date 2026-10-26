@@ -1,0 +1,19 @@
+{
+  "name": "@attentionos/provider-crm-webhook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lead handoff to a CRM: signed JSON webhook, Google Sheets (Apps Script), GoHighLevel and HubSpot.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "zod": "^4.6.5",
+    "@attentionos/provider-shared": "workspace:*"
+  }
+}

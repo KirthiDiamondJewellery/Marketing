@@ -1,0 +1,18 @@
+{
+  "name": "@attentionos/provider-notify-console",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Console notifier for development: prints messages and reads replies from a local file.",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@attentionos/core": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

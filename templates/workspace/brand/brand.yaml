@@ -1,0 +1,54 @@
+# The basics about your brand. Every agent reads this file.
+# `/attention:init` fills most of it in for you during the onboarding interview.
+# Lines starting with # are notes for you; AttentionOS ignores them.
+
+name: "{{WORKSPACE_NAME}}"
+
+# TODO: one plain sentence: what you do and for whom.
+# Example: "We help busy dentists fill their chairs without discounting."
+oneLiner: ""
+
+# TODO: your website, starting with https://
+# website: "https://example.com"
+
+timezone: "{{TIMEZONE}}"
+
+# TODO: your handles on each platform you use (without the @ is fine too).
+handles: {}
+#  instagram: "@yourhandle"
+#  tiktok: "@yourhandle"
+#  youtube: "@yourhandle"
+#  linkedin: "yourname"
+
+# TODO: what you sell. Details go in offers.md; here, just a short id, name and default call to action.
+# cta options: comment_keyword, dm_keyword, link_in_bio, follow, save_share, book_call, none
+offers: []
+#  - id: main
+#    name: "Your main offer"
+#    url: "https://example.com/work-with-us"
+#    cta: book_call
+
+cta:
+  # How your audience usually takes the next step.
+  # "comment_keyword" = people comment a word and get your guide by DM (needs level 3).
+  primary: comment_keyword
+  # TODO: where your lead magnets live and tracked links point.
+  # siteUrl: "https://example.com"
+  # Optional text in front of every utm_content tag. Leave empty unless you track several brands.
+  utmContentPrefix: ""
+
+# Share of posts per funnel stage. Must add up to 100.
+# tofu = new people find you, mofu = they start to trust you, bofu = they buy.
+funnelMix:
+  tofu: 50
+  mofu: 30
+  bofu: 20
+
+# TODO: words and phrases that must never appear in your scripts or captions.
+bannedPhrases: []
+#  - "game changer"
+#  - "in today's fast-paced world"
+
+# TODO: 10 to 20 niche hashtags. Each post picks 3 to 5 of these.
+hashtagPool: []
+#  - "#yourniche"
