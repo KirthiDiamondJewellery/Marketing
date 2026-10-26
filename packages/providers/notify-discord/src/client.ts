@@ -42,7 +42,7 @@ export class DiscordClient {
     if (!planned.files.length) {
       return this.request(path, () => ({ method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(planned.payload) }));
     }
-    const blobs: { bytes: Uint8Array; filename: string }[] = [];
+    const blobs: { bytes: Uint8Array<ArrayBuffer>; filename: string }[] = [];
     for (const f of planned.files) {
       const st = await stat(f.localPath).catch(() => {
         throw new ProviderError(PROVIDER, "invalid_request", `attachment not found: ${basename(f.localPath)}`);
