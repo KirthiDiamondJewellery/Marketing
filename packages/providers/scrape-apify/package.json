@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@attentionos/core": "workspace:*",
-    "zod": "^4.6.5",
     "@attentionos/provider-scrape-ytdlp": "workspace:*",
-    "@attentionos/provider-shared": "workspace:*"
+    "@attentionos/provider-shared": "workspace:*",
+    "zod": "^4.6.7"
   }
 }
