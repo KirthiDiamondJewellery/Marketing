@@ -1,5 +1,8 @@
 import { generateKeyPairSync, sign } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { parseConfig, ProviderError, silentLogger } from "@attentionos/core";
 import { describe, expect, it } from "vitest";
 import {
@@ -184,6 +187,38 @@ describe("notifier", () => {
   it("switches to buttons when a public key is configured", () => {
     const n = create({ secret: secrets({ ...env, DISCORD_PUBLIC_KEY: "ab" }), config, log: silentLogger });
     expect(n.actionMode).toBe("buttons");
+  });
+
+  it("preserves attachment bytes and metadata when retrying a multipart upload", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "discord-upload-"));
+    try {
+      const bytes = Buffer.from([0, 1, 127, 128, 255]);
+      const file = join(dir, "clip.mp4");
+      await writeFile(file, bytes);
+      const forms: FormData[] = [];
+      const n = create({
+        secret: secrets(env), config, log: silentLogger, sleep: async () => {},
+        fetch: async (_url, init) => {
+          forms.push(init!.body as FormData);
+          return forms.length === 1
+            ? new Response(JSON.stringify({ retry_after: 0 }), { status: 429 })
+            : new Response(JSON.stringify({ id: "1300000000000000030" }));
+        },
+      });
+      await expect(n.send({ text: "Cut 2", attachments: [{ localPath: file, caption: "Preview" }] })).resolves.toEqual({ messageId: "1300000000000000030" });
+      expect(forms).toHaveLength(2);
+      expect(forms[0]).not.toBe(forms[1]);
+      for (const form of forms) {
+        const payload = JSON.parse(form.get("payload_json") as string);
+        expect(payload.content).toBe("Cut 2");
+        expect(payload.attachments).toEqual([{ id: 0, filename: "clip.mp4", description: "Preview" }]);
+        const upload = form.get("files[0]") as File;
+        expect(upload.name).toBe("clip.mp4");
+        expect(Buffer.from(await upload.arrayBuffer())).toEqual(bytes);
+      }
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
   });
 
   it("first poll starts at the newest message without replaying history", async () => {
