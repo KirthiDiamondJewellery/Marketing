@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-// TypeScript 7 is the workspace compiler; this AST check needs the JavaScript compiler API.
+// Keep this AST check's JavaScript compiler API independent of the workspace compiler.
 import ts from "typescript-compiler-api";
 import { describe, expect, it } from "vitest";
 
