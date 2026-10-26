@@ -2,6 +2,8 @@
 
 # AttentionOS
 
+> This repository is a fork of [evanbaker315/AttentionOS](https://github.com/evanbaker315/AttentionOS) (MIT), maintained for this organisation's own deployment. Install commands and `./aos update` point here; upstream credit and licence notices are kept in [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
 A self-hosted, agent-driven content pipeline for short-form video: research → strategy → scripting → editing → publishing → engagement → measurement, with a feedback loop into the next cycle. Agents run on Claude Code (your own Claude plan) or the Anthropic API. Every public action is gated by deterministic validators and per-agent autonomy levels.
 
 - **License:** MIT
@@ -64,7 +66,7 @@ This gets a working stack in about 30 minutes, most of it the first image build.
 # 1. Source and stack folder
 export AOS=~/AttentionOS     # Linux server: /opt/attentionos (sudo mkdir -p $AOS && sudo chown $USER $AOS)
 mkdir -p "$AOS"/{workspace,backups} && chmod 700 "$AOS/backups"
-git clone --depth 1 https://github.com/evanbaker315/AttentionOS "$AOS/src"
+git clone --depth 1 https://github.com/KirthiDiamondJewellery/Marketing "$AOS/src"
 cd "$AOS"
 cp src/deploy/{docker-compose.yml,aos,uninstall.sh} .
 cp src/deploy/.env.example .env && chmod 600 .env
@@ -259,10 +261,10 @@ Copy `.env.example` to `.env` for local dev. Without Docker, `pnpm attentionos s
 
 ## Report an issue
 
-- **Bugs:** [open an issue](https://github.com/evanbaker315/AttentionOS/issues/new/choose) with the bug report form. Include the output of `./aos doctor`, your OS and how you installed, what you did, what you expected, and what happened (`./aos logs` helps). Never paste API keys, tokens or anyone's personal data.
+- **Bugs:** [open an issue](https://github.com/KirthiDiamondJewellery/Marketing/issues/new/choose) with the bug report form. Include the output of `./aos doctor`, your OS and how you installed, what you did, what you expected, and what happened (`./aos logs` helps). Never paste API keys, tokens or anyone's personal data.
 - **Feature or provider requests:** use the feature request or provider request form on the same page.
-- **Questions and ideas:** [Discussions](https://github.com/evanbaker315/AttentionOS/discussions).
-- **Security vulnerabilities:** never in a public issue. Report privately via [GitHub security advisories](https://github.com/evanbaker315/AttentionOS/security/advisories/new); see [SECURITY.md](SECURITY.md).
+- **Questions and ideas:** [Discussions](https://github.com/KirthiDiamondJewellery/Marketing/discussions).
+- **Security vulnerabilities:** never in a public issue. Report privately via [GitHub security advisories](https://github.com/KirthiDiamondJewellery/Marketing/security/advisories/new); see [SECURITY.md](SECURITY.md).
 
 Search existing issues first. Since the project updates often, check that you're on the latest version (`./aos update`) before reporting.
 
@@ -281,7 +283,7 @@ By participating you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Security
 
-Report vulnerabilities privately via [GitHub security advisories](https://github.com/evanbaker315/AttentionOS/security/advisories/new). See [SECURITY.md](SECURITY.md).
+Report vulnerabilities privately via [GitHub security advisories](https://github.com/KirthiDiamondJewellery/Marketing/security/advisories/new). See [SECURITY.md](SECURITY.md).
 
 ## License
 

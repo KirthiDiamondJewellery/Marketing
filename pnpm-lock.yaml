@@ -214,7 +214,7 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
       '@attentionos/core':
@@ -362,7 +362,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
       '@attentionos/runtime':
@@ -411,7 +411,7 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/community:
@@ -429,7 +429,7 @@ importers:
         specifier: workspace:*
         version: link:../publishing
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/editing:
@@ -450,7 +450,7 @@ importers:
         specifier: workspace:*
         version: link:../research
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/knowledge:
@@ -462,7 +462,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/knowledge
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
       '@attentionos/db':
@@ -490,7 +490,7 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/onboarding:
@@ -508,7 +508,7 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/ops:
@@ -520,7 +520,7 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
       '@attentionos/db':
@@ -545,7 +545,7 @@ importers:
         specifier: workspace:*
         version: link:../publishing
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/publishing:
@@ -560,7 +560,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/guardrails
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/research:
@@ -578,7 +578,7 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
       '@attentionos/db':
@@ -594,7 +594,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/guardrails
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
       '@attentionos/db':
@@ -622,7 +622,7 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   modules/trial-reels:
@@ -643,7 +643,7 @@ importers:
         specifier: workspace:*
         version: link:../publishing
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/core:
@@ -655,7 +655,7 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/db:
@@ -667,7 +667,7 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/guardrails:
@@ -679,7 +679,7 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/knowledge:
@@ -697,7 +697,7 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
       '@attentionos/db':
@@ -719,7 +719,7 @@ importers:
         specifier: ^1.32.1
         version: 1.32.1(zod@4.6.7)
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/media:
@@ -728,7 +728,7 @@ importers:
         specifier: workspace:*
         version: link:../core
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/provider-shared:
@@ -740,7 +740,7 @@ importers:
         specifier: workspace:*
         version: link:../media
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/analytics-csv:
@@ -749,7 +749,7 @@ importers:
         specifier: workspace:*
         version: link:../../core
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/asr-whispercpp:
@@ -761,7 +761,7 @@ importers:
         specifier: workspace:*
         version: link:../../media
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/crm-webhook:
@@ -773,7 +773,7 @@ importers:
         specifier: workspace:*
         version: link:../../provider-shared
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/notify-console:
@@ -782,7 +782,7 @@ importers:
         specifier: workspace:*
         version: link:../../core
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/notify-discord:
@@ -791,7 +791,7 @@ importers:
         specifier: workspace:*
         version: link:../../core
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/notify-telegram:
@@ -800,7 +800,7 @@ importers:
         specifier: workspace:*
         version: link:../../core
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/publish-blotato:
@@ -812,7 +812,7 @@ importers:
         specifier: workspace:*
         version: link:../../provider-shared
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/publish-zernio:
@@ -824,7 +824,7 @@ importers:
         specifier: workspace:*
         version: link:../../provider-shared
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/scrape-apify:
@@ -839,7 +839,7 @@ importers:
         specifier: workspace:*
         version: link:../../provider-shared
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/scrape-iggraph:
@@ -851,7 +851,7 @@ importers:
         specifier: workspace:*
         version: link:../../provider-shared
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/scrape-ytdlp:
@@ -860,7 +860,7 @@ importers:
         specifier: workspace:*
         version: link:../../core
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/providers/trends-web:
@@ -875,7 +875,7 @@ importers:
         specifier: ^5.11.2
         version: 5.11.2
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/render-motion:
@@ -911,7 +911,7 @@ importers:
         specifier: ^1.32.1
         version: 1.32.1(zod@4.6.7)
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/runtime:
@@ -929,7 +929,7 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       zod:
-        specifier: ^4.6.5
+        specifier: ^4.6.7
         version: 4.6.7
 
   packages/scoring:
