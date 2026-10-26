@@ -49,7 +49,7 @@ Check: `docker compose version` prints v2.x.
 export AOS=~/AttentionOS            # Linux: /opt/attentionos (then sudo mkdir -p $AOS && sudo chown $USER $AOS)
 mkdir -p "$AOS"/{workspace,backups}
 chmod 700 "$AOS/backups"
-git clone --depth 1 https://github.com/evanbaker315/AttentionOS "$AOS/src"
+git clone --depth 1 https://github.com/KirthiDiamondJewellery/Marketing "$AOS/src"
 
 cd "$AOS"
 cp src/deploy/docker-compose.yml docker-compose.yml
