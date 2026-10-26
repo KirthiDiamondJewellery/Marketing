@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import ts from "typescript";
+// TypeScript 7 is the workspace compiler; this AST check needs the JavaScript compiler API.
+import ts from "typescript-compiler-api";
 import { describe, expect, it } from "vitest";
 
 describe("Studio action authentication coverage", () => {
