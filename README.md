@@ -62,6 +62,15 @@ This gets a working stack in about 30 minutes, most of it the first image build.
 
 **Prerequisites:** Docker with Compose v2 (`docker compose version`), `git`, `openssl`, and a Claude Pro or Max plan. On Windows, do everything inside WSL 2: [docs/install.md#windows-wsl-2](docs/install.md#windows-wsl-2).
 
+**One command.** `deploy/bootstrap.sh` does steps 1 to 3 below for you (stack dir, source, `.env` with generated secrets, build, start) and is safe to re-run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/KirthiDiamondJewellery/Marketing/main/deploy/bootstrap.sh | bash
+# Optional settings: AOS=/opt/attentionos BRAND_NAME="..." TZ=Asia/Kolkata PRESET=agency-founder; --no-start prepares without building
+```
+
+Or by hand:
+
 ```bash
 # 1. Source and stack folder
 export AOS=~/AttentionOS     # Linux server: /opt/attentionos (sudo mkdir -p $AOS && sudo chown $USER $AOS)
