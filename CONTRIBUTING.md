@@ -112,7 +112,7 @@ If the guard flags something legitimate, change the example to use placeholders 
 
 ## Reporting bugs and requesting features
 
-Open an issue at [github.com/evanbaker315/AttentionOS/issues](https://github.com/evanbaker315/AttentionOS/issues/new/choose) and pick a form: **bug report**, **feature request** or **provider request**. Include the output of `./aos doctor` (or `attentionos doctor`) and what you expected to happen. Search existing issues first. Questions and ideas that aren't bugs go to [Discussions](https://github.com/evanbaker315/AttentionOS/discussions).
+Open an issue at [github.com/KirthiDiamondJewellery/Marketing/issues](https://github.com/KirthiDiamondJewellery/Marketing/issues/new/choose) and pick a form: **bug report**, **feature request** or **provider request**. Include the output of `./aos doctor` (or `attentionos doctor`) and what you expected to happen. Search existing issues first. Questions and ideas that aren't bugs go to [Discussions](https://github.com/KirthiDiamondJewellery/Marketing/discussions).
 
 For security issues, **don't open an issue**; follow [SECURITY.md](SECURITY.md).
 

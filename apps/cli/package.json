@@ -7,12 +7,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evanbaker315/AttentionOS.git",
+    "url": "git+https://github.com/KirthiDiamondJewellery/Marketing.git",
     "directory": "apps/cli"
   },
-  "homepage": "https://github.com/evanbaker315/AttentionOS#readme",
+  "homepage": "https://github.com/KirthiDiamondJewellery/Marketing#readme",
   "bugs": {
-    "url": "https://github.com/evanbaker315/AttentionOS/issues"
+    "url": "https://github.com/KirthiDiamondJewellery/Marketing/issues"
   },
   "keywords": [
     "attentionos",
@@ -46,7 +46,7 @@
     "picocolors": "^1.1.1",
     "postgres": "^3.4.9",
     "yaml": "^2.9.1",
-    "zod": "^4.6.5"
+    "zod": "^4.6.7"
   },
   "peerDependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.3.296"
@@ -88,6 +88,6 @@
     "@attentionos/runner": "workspace:*",
     "@attentionos/runtime": "workspace:*",
     "@attentionos/worker": "workspace:*",
-    "tsup": "^8.5.1"
+    "tsup": "^9.0.0"
   }
 }

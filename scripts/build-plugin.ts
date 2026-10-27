@@ -19,7 +19,7 @@
  * `mcp__plugin_attention_attentionos__*` and start in the plugin's install folder).
  *
  * The repo-root `.claude-plugin/marketplace.json` lists `./plugin`, so `/plugin marketplace add
- * evanbaker315/AttentionOS` then `/plugin install attentionos@attentionos` installs this output.
+ * KirthiDiamondJewellery/Marketing` then `/plugin install attentionos@attentionos` installs this output.
  */
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -264,7 +264,7 @@ function renderReadme(a: Pick<Assembled, "pluginName" | "version" | "commands" |
     "Install it from Claude Code:",
     "",
     "```",
-    "/plugin marketplace add evanbaker315/AttentionOS",
+    "/plugin marketplace add KirthiDiamondJewellery/Marketing",
     "/plugin install attentionos@attentionos",
     "```",
     "",

@@ -10,7 +10,7 @@ import { fetchPublicPage, isPublicAddress } from "./public-http.ts";
 export type PageText = { url: string; title: string; description: string; text: string };
 export type SiteText = { pages: PageText[]; problems: string[] };
 
-const UA = "AttentionOS-onboarding/0.1 (+https://github.com/evanbaker315/AttentionOS)";
+const UA = "AttentionOS-onboarding/0.1 (+https://github.com/KirthiDiamondJewellery/Marketing)";
 const PAGE_CHARS = 6000;
 const TOTAL_CHARS = 16_000;
 const OFFER_HINT = /about|service|offer|pricing|price|work-with|programs?|coaching|consult|packages?|solutions?|what-we-do|how-it-works|team|story/i;

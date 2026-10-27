@@ -13,6 +13,8 @@ concurrency:
 jobs:
   dco:
     name: Every commit is signed off
+    # Dependabot's commits never carry a sign-off; its PRs are covered by CI and the secret scan instead.
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -30,6 +32,8 @@ jobs:
           missing=0
           for sha in $(git rev-list --no-merges "$BASE_SHA..$HEAD_SHA"); do
             author_email=$(git log -1 --format='%ae' "$sha")
+            # Commits by GitHub bots (Dependabot, GitHub Actions) are exempt: they have no human author to sign.
+            case "$author_email" in *"[bot]@users.noreply.github.com") continue ;; esac
             if ! git log -1 --format='%B' "$sha" | grep -i '^Signed-off-by: ' | grep -qiF "<${author_email}>"; then
               echo "::error::Commit $sha ($(git log -1 --format='%s' "$sha")) has no Signed-off-by line matching its author."
               missing=1

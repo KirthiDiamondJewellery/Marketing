@@ -29,7 +29,7 @@ export { parseFeed, stripHtml } from "./feed.ts";
 export const TREND_KINDS = ["rss", "google_news", "hn", "reddit", "github"] as const;
 export type WebTrendKind = (typeof TREND_KINDS)[number];
 
-const USER_AGENT = "AttentionOS-trend-radar/0.1 (+https://github.com/evanbaker315/AttentionOS)";
+const USER_AGENT = "AttentionOS-trend-radar/0.1 (+https://github.com/KirthiDiamondJewellery/Marketing)";
 
 type Opts = { secret(name: string): string | undefined; config: AttentionOSConfig; log: Logger; fetch?: FetchLike; now?: () => Date };
 
