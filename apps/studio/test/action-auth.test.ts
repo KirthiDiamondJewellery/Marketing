@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import ts from "typescript";
+// Keep this AST check's JavaScript compiler API independent of the workspace compiler.
+import ts from "typescript-compiler-api";
 import { describe, expect, it } from "vitest";
 
 describe("Studio action authentication coverage", () => {

@@ -162,6 +162,8 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+packageExtensionsChecksum: sha256-7fpFUBoUk3uo+wNVa1XbUpd3/qAvy+bqE2bhvWdJQko=
+
 importers:
 
   .:
@@ -179,8 +181,8 @@ importers:
         specifier: ^2.11.10
         version: 2.11.10
       typescript:
-        specifier: ~5.9.3
-        version: 5.9.3
+        specifier: 6.0.3
+        version: 6.0.3
       vitest:
         specifier: ^5.0.5
         version: 5.0.5(@opentelemetry/api@1.10.0)(@types/node@24.19.2)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
@@ -385,8 +387,11 @@ importers:
         specifier: ^4.23.15
         version: 4.23.15
       typescript:
-        specifier: ~5.9.3
-        version: 5.9.3
+        specifier: 6.0.3
+        version: 6.0.3
+      typescript-compiler-api:
+        specifier: npm:typescript@5.9.3
+        version: typescript@5.9.3
 
   apps/worker:
     dependencies:
@@ -2996,6 +3001,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   ufo@1.6.4:
     resolution: {integrity: sha512-JFNbkD1Svwe0KvGi8GOeLcP4kAWQ609twvCdcHxq1oSL8svv39ZuSvajcD8B+5D0eL4+s1Is2D/O6KN3qcTeRA==}
 
@@ -4877,6 +4887,8 @@ snapshots:
       mime-types: 3.0.2
 
   typescript@5.9.3: {}
+
+  typescript@6.0.3: {}
 
   ufo@1.6.4: {}
 

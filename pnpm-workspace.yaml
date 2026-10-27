@@ -5,3 +5,9 @@ packages:
   - "modules/*"
 allowBuilds:
   esbuild: true
+# tsup's declaration bundler requires the JavaScript compiler API removed in TS 7.
+# Keep tsup on its compatible compiler version independently of the workspace compiler.
+packageExtensions:
+  tsup@8.5.1:
+    dependencies:
+      typescript: 5.9.3
