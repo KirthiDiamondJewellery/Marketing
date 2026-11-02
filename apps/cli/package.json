@@ -44,7 +44,7 @@
     "fast-xml-parser": "^5.11.2",
     "jiti": "^2.7.0",
     "picocolors": "^1.1.1",
-    "postgres": "^3.4.9",
+    "postgres": "^4.0.0",
     "yaml": "^2.9.1",
     "zod": "^4.6.7"
   },

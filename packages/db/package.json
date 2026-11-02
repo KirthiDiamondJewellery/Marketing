@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@attentionos/core": "workspace:*",
-    "postgres": "^3.4.9",
+    "postgres": "^4.0.0",
     "zod": "^4.6.7"
   },
   "files": [
