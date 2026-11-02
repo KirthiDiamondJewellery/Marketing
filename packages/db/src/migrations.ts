@@ -84,7 +84,9 @@ export function collectMigrations(sources: MigrationSource[]): MigrationFile[] {
   return [...byName.values()].sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
 }
 
-async function ensureTable(sql: Sql): Promise<void> {
+type MigrationSql = Sql | Awaited<ReturnType<Sql["reserve"]>>;
+
+async function ensureTable(sql: MigrationSql): Promise<void> {
   await sql`
     create table if not exists _aos_migrations (
       name        text primary key,
@@ -93,7 +95,7 @@ async function ensureTable(sql: Sql): Promise<void> {
     )`;
 }
 
-export async function migrationStatus(sql: Sql, files: MigrationFile[]): Promise<MigrationStatus> {
+export async function migrationStatus(sql: MigrationSql, files: MigrationFile[]): Promise<MigrationStatus> {
   await ensureTable(sql);
   const rows = await sql<{ name: string; checksum: string; applied_at: Date }[]>`
     select name, checksum, applied_at from _aos_migrations order by name`;
