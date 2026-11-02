@@ -19,6 +19,6 @@
   "devDependencies": {
     "@attentionos/db": "workspace:*",
     "@attentionos/mcp": "workspace:*",
-    "@modelcontextprotocol/sdk": "^1.32.1"
+    "@modelcontextprotocol/sdk": "^1.32.2"
   }
 }
