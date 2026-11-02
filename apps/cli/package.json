@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
-    "croner": "^10.0.1",
+    "croner": "^11.0.0",
     "fast-xml-parser": "^5.11.2",
     "jiti": "^2.7.0",
     "picocolors": "^1.1.1",
