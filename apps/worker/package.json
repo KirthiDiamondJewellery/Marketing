@@ -17,7 +17,7 @@
     "@attentionos/mcp": "workspace:*",
     "@attentionos/runner": "workspace:*",
     "@attentionos/runtime": "workspace:*",
-    "croner": "^10.0.1",
+    "croner": "^11.0.0",
     "zod": "^4.6.7"
   }
 }

@@ -196,8 +196,8 @@ importers:
         specifier: ^1.32.1
         version: 1.32.1(zod@4.6.7)
       croner:
-        specifier: ^10.0.1
-        version: 10.0.1
+        specifier: ^11.0.0
+        version: 11.0.0
       fast-xml-parser:
         specifier: ^5.11.2
         version: 5.11.2
@@ -312,7 +312,7 @@ importers:
         version: link:../worker
       tsup:
         specifier: ^9.0.0
-        version: 9.0.0(jiti@2.7.0)(postcss@8.5.29)(tsx@4.23.15)(typescript@5.9.3)(yaml@2.9.1)
+        version: 9.0.0(jiti@2.7.0)(postcss@8.5.29)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1)
 
   apps/studio:
     dependencies:
@@ -411,8 +411,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/runtime
       croner:
-        specifier: ^10.0.1
-        version: 10.0.1
+        specifier: ^11.0.0
+        version: 11.0.0
       zod:
         specifier: ^4.6.7
         version: 4.6.7
@@ -2168,8 +2168,8 @@ packages:
     resolution: {integrity: sha512-tJtZBBHA6vjIAaF6EnIaq6laBBP9aq/Y3ouVJjEfoHbRBcHBAHYcMh/w8LDrk2PvIMMq8gmopa5D4V8RmbrxGw==}
     engines: {node: '>= 0.10'}
 
-  croner@10.0.1:
-    resolution: {integrity: sha512-ixNtAJndqh173VQ4KodSdJEI6nuioBWI0V1ITNKhZZsO0pEMoDxz539T4FTTbSZ/xIOSuDnzxLVRqBVSvPNE2g==}
+  croner@11.0.0:
+    resolution: {integrity: sha512-T17ADjdttrVToyzLpLq9Xb9xzcMwpQ/M3Qs9szhh0MVNTbv6NWQ9OFYa2qlzPYXFMn+uoDlnW1IpIv6cAvFtyA==}
     engines: {node: '>=18.0'}
 
   cross-spawn@7.0.6:
@@ -4004,7 +4004,7 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  croner@10.0.1: {}
+  croner@11.0.0: {}
 
   cross-spawn@7.0.6:
     dependencies:
@@ -4838,7 +4838,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@9.0.0(jiti@2.7.0)(postcss@8.5.29)(tsx@4.23.15)(typescript@5.9.3)(yaml@2.9.1):
+  tsup@9.0.0(jiti@2.7.0)(postcss@8.5.29)(tsx@4.23.15)(typescript@6.0.3)(yaml@2.9.1):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.28.2)
       cac: 7.1.0
@@ -4859,7 +4859,7 @@ snapshots:
       tree-kill: 1.2.2
     optionalDependencies:
       postcss: 8.5.29
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - jiti
       - tsx
